@@ -1000,19 +1000,18 @@
 
   sections.forEach(s => observer.observe(s));
 
- // ── SMOOTH NAV CLICK (VERSION CORRIGÉE) ──────────────────────────────────
+// ── SMOOTH NAV CLICK (VERSION FINALE CORRIGÉE) ──────────────────────────
   navBtns.forEach(btn => {
     btn.addEventListener('click', e => {
       const href = btn.getAttribute('href');
 
-      // SI LE LIEN EST UNE URL COMPLÈTE (commence par http)
-      // On ne fait rien, on laisse le navigateur ouvrir la page
-      if (href.startsWith('http')) {
-        return; 
+      // Vérifie si le lien commence par "http" (lien vers un autre site)
+      if (href && href.startsWith('http')) {
+        // On ne fait rien : le navigateur va ouvrir le lien normalement
+        return;
       }
 
-      // SI C'EST UN LIEN INTERNE (commence par #)
-      // On bloque le comportement par défaut et on fait le scroll fluide
+      // Pour les liens internes (commencent par #)
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
