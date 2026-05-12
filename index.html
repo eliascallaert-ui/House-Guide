@@ -8,57 +8,46 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sage:       #7D9B76;
-    --sage-dark:  #5A7554;
-    --sage-light: #B5CCAF;
-    --sage-pale:  #EAF0E8;
-    --beige:      #F5EFE4;
-    --beige-dark: #E8DCCA;
-    --beige-mid:  #D4C4A8;
-    --cream:      #FDFAF5;
-    --terracotta: #C17F5E;
-    --terra-light:#F2E0D4;
-    --umber:      #6B4F3A;
-    --bark:       #3D2B1F;
-    --fog:        #8E9E8A;
-    --white:      #FFFFFF;
+    --sage: #7D9B76; --sage-dark: #5A7554; --sage-light: #B5CCAF; --sage-pale: #EAF0E8;
+    --beige: #F5EFE4; --beige-dark: #E8DCCA; --beige-mid: #D4C4A8; --cream: #FDFAF5;
+    --terracotta: #C17F5E; --terra-light:#F2E0D4; --umber: #6B4F3A; --bark: #3D2B1F;
+    --fog: #8E9E8A; --white: #FFFFFF;
     --font-display: 'Playfair Display', Georgia, serif;
-    --font-body:    'Jost', sans-serif;
+    --font-body: 'Jost', sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { background: var(--cream); color: var(--bark); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem 2rem; background: var(--bark); overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(125,155,118,0.35) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(193,127,94,0.25) 0%, transparent 55%); background-color: #2A1F16; }
   .hero-content { position: relative; z-index: 2; max-width: 680px; }
   .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 8vw, 5.5rem); color: var(--beige); font-weight: 400; line-height: 1.1; margin-bottom: 0.5rem; }
   .hero h1 em { color: var(--sage-light); font-style: italic; }
-  .hero-sub { color: var(--fog); margin-bottom: 2.5rem; }
+  .hero-sub { font-size: 0.95rem; color: var(--fog); margin-bottom: 2.5rem; }
 
-  /* ── NAV ── */
+  /* NAV */
   .sticky-nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--beige-dark); padding: 0.75rem 2rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
   .nav-btn { white-space: nowrap; background: none; border: 1px solid transparent; color: var(--fog); font-family: var(--font-body); font-size: 0.78rem; text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 2rem; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
   .nav-btn:hover { border-color: var(--sage); color: var(--sage-dark); }
   .nav-btn.active { background: var(--sage); color: var(--white); border-color: var(--sage); }
 
-  /* ── LAYOUT ── */
+  /* LAYOUT & SECTIONS */
   .container { max-width: 820px; margin: 0 auto; padding: 0 1.5rem; }
-  .section { padding: 4rem 0 2rem; opacity: 1; transform: none; } /* On force l'affichage pour éviter tout bug */
+  .section { padding: 4rem 0 2rem; }
   .section-header { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 2rem; border-bottom: 1px solid var(--beige-dark); padding-bottom: 1rem; }
   .section-icon { width: 52px; height: 52px; background: var(--sage-pale); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-  .section-title { font-family: var(--font-display); font-size: 1.75rem; color: var(--bark); }
-
+  .section-title { font-family: var(--font-display); font-size: 1.75rem; color: var(--bark); font-weight: 600; }
+  
   .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-  .info-card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 14px; padding: 1.25rem 1.5rem; }
-
-  .wifi-block { background: var(--bark); border-radius: 18px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; color: var(--white); margin-top: 1rem; }
-  .wifi-label { color: var(--sage-light); font-size: 0.7rem; text-transform: uppercase; }
+  .info-card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 14px; padding: 1.25rem 1.5rem; transition: 0.2s; }
+  .wifi-block { background: var(--bark); border-radius: 18px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; color: var(--white); }
+  .wifi-label { font-size: 0.7rem; color: var(--sage-light); text-transform: uppercase; }
   .wifi-value { font-size: 1.1rem; color: var(--beige); }
 
-  .footer { background: var(--bark); color: var(--fog); text-align: center; padding: 3rem 1.5rem; margin-top: 4rem; }
+  /* EN text handling */
+  .en-text { color: var(--fog); font-style: italic; font-size: 0.85rem; display: block; }
 </style>
 </head>
 <body>
@@ -71,79 +60,61 @@
   </div>
 </header>
 
-<nav class="sticky-nav" id="nav">
-  <a href="#essentiels" class="nav-btn active">📋 Essentiels</a>
+<nav class="sticky-nav">
+  <a href="#essentiels" class="nav-btn">📋 Essentiels</a>
   <a href="#chambre" class="nav-btn">🛏 Chambre</a>
   <a href="#cuisine" class="nav-btn">🍳 Cuisine</a>
-  <a href="#transport" class="nav-btn">🚇 Transport</a>
-  <!-- CE LIEN EST CORRECTEMENT CONFIGURÉ ICI -->
-  <a href="https://eliascallaert-ui.github.io/Check-list-tenant/" class="nav-btn" target="_blank">🏁 CHECK-LIST</a>
+  <a href="https://eliascallaert-ui.github.io/Check-list-tenant/" class="nav-btn" target="_blank" style="border: 1px solid var(--sage)">🏁 CHECK-LIST</a>
 </nav>
 
 <main class="container">
   <section class="section" id="essentiels">
     <div class="section-header">
       <div class="section-icon">📋</div>
-      <h2 class="section-title">Infos Essentielles</h2>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Infos Essentielles</h2>
+        <p style="font-size:0.8rem; color:var(--fog); text-transform:uppercase;">Essential Information</p>
+      </div>
     </div>
     <div class="card-grid">
       <div class="info-card"><strong>📍 Adresse:</strong><br>Avenue Boileau 3, 1040 Etterbeek</div>
-      <div class="info-card"><strong>📞 Eva:</strong> 0485 11 40 70<br><strong>📞 Elias:</strong> 0478 80 45 13</div>
+      <div class="info-card"><strong>📞 Contact:</strong><br>Eva: 0485 11 40 70<br>Elias: 0478 80 45 13</div>
     </div>
     <div class="wifi-block">
-      <div><div class="wifi-label">WiFi</div><div class="wifi-value">LANgoustine</div></div>
-      <div><div class="wifi-label">Password</div><div class="wifi-value">arukigaya</div></div>
+      <div><div class="wifi-label">WiFi Network</div><div class="wifi-value">LANgoustine</div></div>
+      <div><div class="wifi-label">Password</div><div class="wifi-value" style="font-family:monospace; color:var(--sage-light)">arukigaya</div></div>
     </div>
   </section>
 
   <section class="section" id="chambre">
-    <div class="section-header">
-      <div class="section-icon">🛏️</div>
-      <h2 class="section-title">Chambre</h2>
+    <div class="section-header"><div class="section-icon">🛏️</div><h2 class="section-title">Votre Chambre</h2></div>
+    <div class="info-card">
+      <p>Canapé-lit, bureau et rangement. Merci de fournir votre propre lessive.</p>
+      <span class="en-text">Sofa-bed, desk and storage. Please provide your own detergent.</span>
     </div>
-    <div class="info-card">Veuillez maintenir la chambre propre et ranger vos affaires.</div>
   </section>
 
   <section class="section" id="cuisine">
-    <div class="section-header">
-      <div class="section-icon">🍳</div>
-      <h2 class="section-title">Cuisine</h2>
+    <div class="section-header"><div class="section-icon">🍳</div><h2 class="section-title">Cuisine Partagée</h2></div>
+    <div class="info-card">
+      <p>Nettoyer après chaque utilisation. Place attitrée dans le frigo.</p>
+      <span class="en-text">Clean after each use. Dedicated fridge shelf for each tenant.</span>
     </div>
-    <div class="info-card">Nettoyez après chaque usage. Respectez les étagères du frigo.</div>
   </section>
 </main>
 
 <footer class="footer">
-  <p>Guide de la Maison · 2026</p>
+  <p>Avenue Boileau 3 · 1040 Etterbeek</p>
 </footer>
 
 <script>
-  // SCRIPT SIMPLIFIÉ POUR ÉVITER TOUT BUG
-  const navBtns = document.querySelectorAll('.nav-btn');
-
-  navBtns.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-
-      // Si c'est le lien externe vers la checklist, on laisse faire
-      if (href.startsWith('http')) {
-        return; 
-      }
-
-      // Si c'est un lien interne, on fait le scroll
+  // Script ultra-simple : pas de blocage de liens
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 70,
-          behavior: 'smooth'
-        });
-      }
-
-      // Changement de bouton actif
-      navBtns.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
     });
   });
 </script>
