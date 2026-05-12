@@ -3,102 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guide de la Maison · Avenue Boileau 3, Etterbeek</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Guide de la Maison · Avenue Boileau 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --sage: #7D9B76; --sage-dark: #5A7554; --sage-light: #B5CCAF; --sage-pale: #EAF0E8;
-    --beige: #F5EFE4; --beige-dark: #E8DCCA; --beige-mid: #D4C4A8; --cream: #FDFAF5;
-    --terracotta: #C17F5E; --terra-light:#F2E0D4; --umber: #6B4F3A; --bark: #3D2B1F;
-    --fog: #8E9E8A; --white: #FFFFFF;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'Jost', sans-serif;
+    --beige: #F5EFE4; --beige-dark: #E8DCCA; --cream: #FDFAF5; --terra: #C17F5E;
+    --bark: #3D2B1F; --fog: #8E9E8A; --white: #FFFFFF;
+    --font-d: 'Playfair Display', serif; --font-b: 'Jost', sans-serif;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--bark); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  body { background: var(--cream); color: var(--bark); font-family: var(--font-b); font-weight: 300; line-height: 1.7; }
 
-  /* HERO */
-  .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem 2rem; background: var(--bark); overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(125,155,118,0.35) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(193,127,94,0.25) 0%, transparent 55%); background-color: #2A1F16; }
-  .hero-content { position: relative; z-index: 2; max-width: 680px; }
-  .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 8vw, 5.5rem); color: var(--beige); font-weight: 400; line-height: 1.1; margin-bottom: 0.5rem; }
+  .hero { position: relative; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem 2rem; background: var(--bark); color: var(--beige); }
+  .hero h1 { font-family: var(--font-d); font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 400; }
   .hero h1 em { color: var(--sage-light); font-style: italic; }
-  .hero-sub { font-size: 0.95rem; color: var(--fog); margin-bottom: 2.5rem; }
 
-  /* NAV */
-  .sticky-nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--beige-dark); padding: 0.75rem 2rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
-  .nav-btn { white-space: nowrap; background: none; border: 1px solid transparent; color: var(--fog); font-family: var(--font-body); font-size: 0.78rem; text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 2rem; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
-  .nav-btn:hover { border-color: var(--sage); color: var(--sage-dark); }
-  .nav-btn.active { background: var(--sage); color: var(--white); border-color: var(--sage); }
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,245,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--beige-dark); padding: 0.8rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+  .nav-btn { white-space: nowrap; background: none; border: 1px solid transparent; color: var(--fog); font-size: 0.75rem; text-transform: uppercase; padding: 0.5rem 1rem; border-radius: 2rem; cursor: pointer; text-decoration: none; transition: 0.2s; }
+  .nav-btn:hover { border-color: var(--sage); color: var(--sage); }
 
-  /* LAYOUT & SECTIONS */
-  .container { max-width: 820px; margin: 0 auto; padding: 0 1.5rem; }
-  .section { padding: 4rem 0 2rem; }
-  .section-header { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 2rem; border-bottom: 1px solid var(--beige-dark); padding-bottom: 1rem; }
-  .section-icon { width: 52px; height: 52px; background: var(--sage-pale); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-  .section-title { font-family: var(--font-display); font-size: 1.75rem; color: var(--bark); font-weight: 600; }
+  .container { max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .section { padding: 4rem 0 2rem; border-bottom: 1px solid var(--beige-dark); }
+  .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+  .section-icon { font-size: 1.8rem; background: var(--sage-pale); padding: 10px; border-radius: 12px; }
+  .section-title h2 { font-family: var(--font-d); font-size: 1.8rem; color: var(--bark); }
+  .en-sub { font-size: 0.8rem; color: var(--fog); text-transform: uppercase; margin-top: -5px; }
+
+  .card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 15px; padding: 1.5rem; margin-bottom: 1rem; }
+  .en-text { display: block; color: var(--fog); font-style: italic; font-size: 0.85rem; margin-top: 5px; border-top: 1px dashed var(--beige-dark); padding-top: 5px; }
   
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-  .info-card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 14px; padding: 1.25rem 1.5rem; transition: 0.2s; }
-  .wifi-block { background: var(--bark); border-radius: 18px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; color: var(--white); }
+  .wifi-block { background: var(--bark); color: var(--white); border-radius: 20px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .wifi-label { font-size: 0.7rem; color: var(--sage-light); text-transform: uppercase; }
-  .wifi-value { font-size: 1.1rem; color: var(--beige); }
-
-  /* EN text handling */
-  .en-text { color: var(--fog); font-style: italic; font-size: 0.85rem; display: block; }
+  
+  .footer { background: var(--bark); color: var(--fog); text-align: center; padding: 4rem 2rem; margin-top: 4rem; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1>Guide de la <em>Maison</em></h1>
-    <p class="hero-sub">Avenue Boileau 3 · Etterbeek · 1040</p>
-  </div>
+  <h1>Guide de la <em>Maison</em></h1>
+  <p>Avenue Boileau 3, Etterbeek</p>
 </header>
 
 <nav class="sticky-nav">
-  <a href="#essentiels" class="nav-btn">📋 Essentiels</a>
-  <a href="#chambre" class="nav-btn">🛏 Chambre</a>
+  <a href="#essentiels" class="nav-btn">📋 Infos</a>
   <a href="#cuisine" class="nav-btn">🍳 Cuisine</a>
-  <a href="https://eliascallaert-ui.github.io/Check-list-tenant/" class="nav-btn" target="_blank" style="border: 1px solid var(--sage)">🏁 CHECK-LIST</a>
+  <a href="#sdb" class="nav-btn">🚿 SdB</a>
+  <a href="#poubelles" class="nav-btn">♻️ Déchets</a>
+  <a href="#transport" class="nav-btn">🚇 Transport</a>
+  <a href="https://eliascallaert-ui.github.io/Check-list-tenant/" class="nav-btn" target="_blank" style="background:var(--sage); color:white">🏁 Check-list</a>
 </nav>
 
 <main class="container">
   <section class="section" id="essentiels">
     <div class="section-header">
       <div class="section-icon">📋</div>
-      <div class="section-title-wrap">
-        <h2 class="section-title">Infos Essentielles</h2>
-        <p style="font-size:0.8rem; color:var(--fog); text-transform:uppercase;">Essential Information</p>
-      </div>
-    </div>
-    <div class="card-grid">
-      <div class="info-card"><strong>📍 Adresse:</strong><br>Avenue Boileau 3, 1040 Etterbeek</div>
-      <div class="info-card"><strong>📞 Contact:</strong><br>Eva: 0485 11 40 70<br>Elias: 0478 80 45 13</div>
+      <div class="section-title"><h2>Infos Essentielles</h2><p class="en-sub">Essential Information</p></div>
     </div>
     <div class="wifi-block">
-      <div><div class="wifi-label">WiFi Network</div><div class="wifi-value">LANgoustine</div></div>
-      <div><div class="wifi-label">Password</div><div class="wifi-value" style="font-family:monospace; color:var(--sage-light)">arukigaya</div></div>
-    </div>
-  </section>
-
-  <section class="section" id="chambre">
-    <div class="section-header"><div class="section-icon">🛏️</div><h2 class="section-title">Votre Chambre</h2></div>
-    <div class="info-card">
-      <p>Canapé-lit, bureau et rangement. Merci de fournir votre propre lessive.</p>
-      <span class="en-text">Sofa-bed, desk and storage. Please provide your own detergent.</span>
+      <div><div class="wifi-label">WiFi</div><div>LANgoustine</div></div>
+      <div><div class="wifi-label">Password</div><div style="color:var(--sage-light)">arukigaya</div></div>
     </div>
   </section>
 
   <section class="section" id="cuisine">
-    <div class="section-header"><div class="section-icon">🍳</div><h2 class="section-title">Cuisine Partagée</h2></div>
-    <div class="info-card">
-      <p>Nettoyer après chaque utilisation. Place attitrée dans le frigo.</p>
-      <span class="en-text">Clean after each use. Dedicated fridge shelf for each tenant.</span>
+    <div class="section-header">
+      <div class="section-icon">🍳</div>
+      <div class="section-title"><h2>Cuisine</h2><p class="en-sub">Kitchen</p></div>
+    </div>
+    <div class="card">
+      <strong>Frigo / Fridge :</strong> Une étagère est dédiée par personne.
+      <span class="en-text">One shelf is dedicated to each person.</span>
+    </div>
+    <div class="card">
+      <strong>Nettoyage / Cleaning :</strong> Merci de laver votre vaisselle et de nettoyer le plan de travail après chaque usage.
+      <span class="en-text">Please wash your dishes and clean the countertop after each use.</span>
+    </div>
+  </section>
+
+  <section class="section" id="sdb">
+    <div class="section-header">
+      <div class="section-icon">🚿</div>
+      <div class="section-title"><h2>Salle de Bain</h2><p class="en-sub">Bathroom</p></div>
+    </div>
+    <div class="card">
+      Aérez la pièce après chaque douche pour éviter l'humidité.
+      <span class="en-text">Ventilate the room after each shower to avoid humidity.</span>
+    </div>
+  </section>
+
+  <section class="section" id="poubelles">
+    <div class="section-header">
+      <div class="section-icon">♻️</div>
+      <div class="section-title"><h2>Déchets</h2><p class="en-sub">Waste & Recycling</p></div>
+    </div>
+    <div class="card">
+      <strong>Bleu :</strong> Plastique, métal, cartons de boisson.
+      <span class="en-text">Blue: Plastic, metal, juice/milk cartons.</span>
+    </div>
+    <div class="card">
+      <strong>Jaune :</strong> Papier et carton propre.
+      <span class="en-text">Yellow: Clean paper and cardboard.</span>
+    </div>
+  </section>
+
+  <section class="section" id="transport">
+    <div class="section-header">
+      <div class="section-icon">🚇</div>
+      <div class="section-title"><h2>Transports</h2><p class="en-sub">Transportation</p></div>
+    </div>
+    <div class="card">
+      Métro 1/5 (Merode / Schuman), Tram 81 (Acacia).
     </div>
   </section>
 </main>
@@ -108,13 +125,18 @@
 </footer>
 
 <script>
-  // Script ultra-simple : pas de blocage de liens
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
+  // Script corrigé : On ne bloque QUE les liens qui commencent par "#"
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+        }
+      }
+      // Les liens commençant par "http" sont ignorés par le script et s'ouvrent normalement
     });
   });
 </script>
