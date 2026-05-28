@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avenue Boileau 3 · Etterbeek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════ DESIGN TOKENS ═══════════════════════ */
+:root{
+  --sage:     #6D9467;  --sage-dk:  #4B6B46;  --sage-lt:  #A8C4A2;
+  --sage-pl:  #EAF0E7;  --beige:    #F5EDE0;  --beige-dk: #E3D2B8;
+  --cream:    #FDFAF4;  --terra:    #B8735A;  --terra-lt: #F0DDD0;
+  --bark:     #2B1A09;  --bark-md:  #5A3A1A;  --fog:      #8C9E88;
+  --gold:     #C9A55A;  --gold-lt:  #FBF3E0;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'Jost',sans-serif;
+  --rad:14px; --rad-lg:20px;
+  --sh:0 4px 24px rgba(43,26,9,.09);
+  --sh-lg:0 14px 48px rgba(43,26,9,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--bark);font-family:var(--fb);font-weight:300;line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ═══════════════════════ LANGUAGE ════════════════════════════ */
+.fr,.en{display:inline}
+body.lang-fr .en{display:none}
+body.lang-en .fr{display:none}
+/* In bilingual mode, add a soft separator between FR and EN inline text */
+body.lang-both .bi-sep{display:none}
+body.lang-fr .bi-sep,body.lang-en .bi-sep{display:none}
+
+/* ═══════════════════════ TOP BAR ═════════════════════════════ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;gap:.5rem;
+  padding:.65rem 1.25rem;
+  background:rgba(253,250,244,.95);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--beige-dk);
+}
+.tb-logo{
+  font-family:var(--fd);font-size:1.05rem;font-weight:600;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;
+}
+.tb-logo span{color:var(--sage-dk);font-style:italic}
+.tb-nav{display:flex;gap:.2rem;align-items:center;flex-wrap:nowrap}
+.nb{
+  padding:.35rem .8rem;border-radius:2rem;border:1px solid transparent;
+  background:none;cursor:pointer;font-family:var(--fb);font-size:.72rem;
+  font-weight:400;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--fog);transition:all .18s;white-space:nowrap;
+}
+.nb:hover{color:var(--sage-dk);border-color:rgba(109,148,103,.4)}
+.nb.on{background:var(--bark);color:var(--cream);border-color:var(--bark)}
+.tb-lang{display:flex;gap:.15rem;margin-left:.4rem;padding-left:.6rem;border-left:1px solid var(--beige-dk)}
+.lb{
+  padding:.28rem .58rem;border-radius:2rem;border:1px solid var(--beige-dk);
+  background:none;cursor:pointer;font-family:var(--fb);font-size:.68rem;
+  color:var(--fog);transition:all .18s;
+}
+.lb.on{background:var(--sage-dk);color:#fff;border-color:var(--sage-dk)}
+@media(max-width:640px){
+  .nb span{display:none}
+  .nb{padding:.35rem .5rem;font-size:.65rem}
+  .tb-logo{font-size:.9rem}
+  /* Checklist mobile improvements */
+  .clitem{padding:.9rem .85rem;gap:.75rem}
+  .clbox{width:24px;height:24px;border-radius:8px;border-width:2.5px}
+  .clchk{font-size:.85rem}
+  .clt-fr,.clt-en{font-size:.92rem}
+  .clt{font-size:.65rem;padding:.75rem .35rem}
+  /* Bigger tap targets on mobile */
+  .nb{min-width:36px;min-height:36px}
+  .lb{min-height:32px;padding:.3rem .65rem}
+}
+@media(max-width:400px){
+  .nb{padding:.3rem .4rem}
+  .cltabs{top:48px}
+}
+
+/* ═══════════════════════ PAGES ═══════════════════════════════ */
+.page{display:none;min-height:100vh;padding-top:52px}
+.page.on{display:block}
+.anim{animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ═══════════════════════ HERO VARIANTS ═══════════════════════ */
+.hero{
+  min-height:calc(100vh - 52px);display:flex;flex-direction:column;
+  justify-content:flex-end;align-items:flex-start;
+  padding:3rem 2rem 4rem;position:relative;overflow:hidden;
+  background:#1C1008;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 65% 55% at 12% 30%, rgba(109,148,103,.42),transparent 55%),
+    radial-gradient(ellipse 55% 65% at 88% 78%, rgba(184,115,90,.28),transparent 55%),
+    radial-gradient(ellipse 100% 100% at 50% 50%,rgba(28,16,8,0) 40%,#1C1008 100%);
+  background-color:#241508;
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(168,196,162,.13) 1px,transparent 1px);
+  background-size:30px 30px;
+}
+.hero-inner{position:relative;z-index:2;max-width:740px}
+.h-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--sage-lt);border:1px solid rgba(168,196,162,.32);
+  padding:.3rem .95rem;border-radius:2rem;margin-bottom:1.75rem;
+  opacity:0;animation:fadeUp .7s .1s forwards;
+}
+.h1{
+  font-family:var(--fd);font-size:clamp(3rem,9vw,6.5rem);
+  font-weight:400;line-height:1.0;color:var(--beige);margin-bottom:.75rem;
+  opacity:0;animation:fadeUp .8s .25s forwards;
+}
+.h1 em{color:var(--sage-lt);font-style:italic;display:block}
+.h-sub{
+  font-size:.88rem;color:var(--fog);letter-spacing:.05em;
+  opacity:0;animation:fadeUp .8s .4s forwards;margin-bottom:2.5rem;
+}
+.h-chips{
+  display:flex;gap:.6rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .9s .55s forwards;
+}
+.chip{
+  background:rgba(109,148,103,.15);border:1px solid rgba(168,196,162,.3);
+  color:var(--sage-lt);padding:.38rem .95rem;border-radius:2rem;font-size:.76rem;
+}
+
+/* Page-level hero (smaller) */
+.phero{
+  background:var(--bark);padding:3rem 1.75rem 2rem;
+  position:relative;overflow:hidden;
+}
+.phero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 70% at 8% 50%, rgba(109,148,103,.38),transparent 55%),
+    radial-gradient(ellipse 45% 55% at 92% 25%, rgba(184,115,90,.2),transparent 55%);
+}
+.phero-bg::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(168,196,162,.07) 1px,transparent 1px);background-size:22px 22px}
+.phero-inner{position:relative;z-index:1;max-width:820px;margin:0 auto}
+.ptag{display:inline-block;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-lt);border:1px solid rgba(168,196,162,.28);padding:.26rem .85rem;border-radius:2rem;margin-bottom:.85rem}
+.ph1{font-family:var(--fd);font-size:clamp(2.2rem,6vw,4rem);font-weight:400;color:var(--beige);line-height:1.05}
+.ph1 em{color:var(--sage-lt);font-style:italic}
+.ph-sub{font-size:.82rem;color:var(--fog);margin-top:.35rem}
+
+/* ═══════════════════════ HOME CARDS ══════════════════════════ */
+.hcards{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.85rem;margin-top:2rem;
+  opacity:0;animation:fadeUp .9s .7s forwards;
+}
+@media(max-width:480px){.hcards{grid-template-columns:1fr 1fr}}
+.hcard{
+  background:rgba(255,255,255,.07);border:1px solid rgba(168,196,162,.22);
+  border-radius:var(--rad-lg);padding:1.5rem;cursor:pointer;
+  backdrop-filter:blur(6px);transition:all .22s;
+}
+.hcard:hover{background:rgba(168,196,162,.17);border-color:rgba(168,196,162,.5);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.28)}
+.hc-ico{font-size:1.9rem;display:block;margin-bottom:.7rem}
+.hc-t{font-family:var(--fd);font-size:1.15rem;color:var(--beige);margin-bottom:.2rem}
+.hc-d{font-size:.78rem;color:rgba(253,250,244,.5);line-height:1.45;margin-bottom:.75rem}
+.hc-arrow{font-size:.7rem;color:var(--sage-lt);letter-spacing:.07em}
+
+/* ═══════════════════════ INNER WRAP ══════════════════════════ */
+.wrap{max-width:820px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+
+/* Section label */
+.slbl{
+  font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--sage-dk);display:flex;align-items:center;gap:.65rem;
+  margin:2.75rem 0 1rem;
+}
+.slbl::after{content:'';flex:1;height:1px;background:var(--beige-dk)}
+.slbl:first-child{margin-top:0}
+
+/* Reveal on scroll */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s}
+.rv.vs{opacity:1;transform:none}
+
+/* Divider */
+.hr{height:1px;background:linear-gradient(to right,transparent,var(--beige-dk),transparent);margin:2.75rem 0}
+
+/* Sub-heading */
+.sh{font-family:var(--fd);font-style:italic;font-size:1.1rem;color:var(--sage-dk);margin:1.75rem 0 .75rem}
+
+/* ═══════════════════════ INFO BLOCKS ═════════════════════════ */
+.igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:.85rem;margin-bottom:1.5rem}
+.icard{background:#fff;border:1px solid var(--beige-dk);border-radius:var(--rad);padding:1.15rem 1.35rem;transition:box-shadow .2s,transform .2s}
+.icard:hover{box-shadow:var(--sh);transform:translateY(-2px)}
+.ic-l{font-size:.65rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--sage-dk);margin-bottom:.32rem}
+.ic-v{font-size:.92rem;color:var(--bark);line-height:1.4}
+.ic-v.mono{font-family:'Courier New',monospace;font-size:1.02rem;background:var(--sage-pl);padding:.18rem .48rem;border-radius:6px;display:inline-block}
+
+/* WiFi block */
+.wblock{
+  background:var(--bark);border-radius:var(--rad-lg);padding:1.6rem 1.85rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+  position:relative;overflow:hidden;margin-bottom:1.5rem;
+}
+.wblock::before{content:'';position:absolute;top:-45px;right:-45px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(109,148,103,.38),transparent 70%)}
+.wi{position:relative;z-index:1}
+.wl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage-lt);margin-bottom:.32rem}
+.wv{font-size:1rem;color:var(--beige)}
+.wv.pw{font-family:'Courier New',monospace;font-size:1.2rem;color:var(--sage-lt);letter-spacing:.06em}
+@media(max-width:500px){.wblock{grid-template-columns:1fr}}
+
+/* Alert */
+.al{border-radius:10px;padding:.95rem 1.2rem;font-size:.84rem;display:flex;gap:.7rem;align-items:flex-start;margin:1rem 0}
+.al.warn{background:var(--terra-lt);border-left:3px solid var(--terra);color:var(--bark-md)}
+.al.info{background:var(--sage-pl);border-left:3px solid var(--sage);color:var(--sage-dk)}
+.al.gold{background:var(--gold-lt);border-left:3px solid var(--gold);color:#5C3A0A}
+.al-i{flex-shrink:0;margin-top:1px}
+
+/* List */
+.rlist{list-style:none;display:flex;flex-direction:column;gap:.52rem}
+.rlist li{display:flex;align-items:flex-start;gap:.85rem;background:#fff;border:1px solid var(--beige-dk);border-radius:10px;padding:.82rem 1.05rem;font-size:.86rem;transition:background .18s}
+.rlist li:hover{background:var(--sage-pl)}
+.ri{font-size:.98rem;flex-shrink:0;margin-top:1px}
+.re{color:var(--fog);font-size:.78rem;font-style:italic;display:block;margin-top:.06rem}
+
+/* ═══════════════════════ WASTE ═══════════════════════════════ */
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:.8rem;margin:1.2rem 0}
+.wc{border-radius:var(--rad);padding:1.1rem;text-align:center;border:2px solid transparent;transition:transform .2s,box-shadow .2s}
+.wc:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.wc.bl{background:#EBF3FF;border-color:#90B8E8}
+.wc.or{background:#FFF0E6;border-color:#E8934A}
+.wc.gr{background:#EBF5EB;border-color:#7BBD7B}
+.wc.wh{background:#F8F8F8;border-color:#CCC}
+.wc.yl{background:#FFFBEB;border-color:#F0C040}
+.we{font-size:1.8rem;display:block;margin-bottom:.35rem}
+.wn{font-weight:500;font-size:.82rem;color:var(--bark)}
+.wd{margin-top:.38rem;font-size:.69rem;font-weight:500}
+.wcn{font-size:.7rem;color:var(--bark-md);margin-top:.28rem;line-height:1.35}
+
+.dpill{background:#fff;border:1px solid var(--beige-dk);border-radius:10px;padding:.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem}
+.dp-d{font-weight:500;font-size:.88rem;min-width:72px}
+.dp-t{display:flex;gap:.32rem;flex-wrap:wrap}
+.bt{font-size:.66rem;padding:.16rem .52rem;border-radius:2rem;font-weight:500}
+.bt-bl{background:#DDEEFF;color:#1B4FA0}.bt-or{background:#FFE8D0;color:#A03A00}
+.bt-gr{background:#DDEEDD;color:#1A5C1A}.bt-wh{background:#EFEFEF;color:#555;border:1px solid #CCC}
+.bt-yl{background:#FFF5CC;color:#755500}
+.dp-time{font-size:.76rem;color:var(--fog);font-style:italic;white-space:nowrap}
+
+/* ═══════════════════════ EMERGENCY ═══════════════════════════ */
+.emlist{display:flex;flex-direction:column;gap:.52rem}
+.emrow{background:#fff;border:1px solid var(--beige-dk);border-radius:10px;padding:.82rem 1.1rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.emrow.red{border-left:3px solid var(--terra);background:var(--terra-lt)}
+.emrow.grn{border-left:3px solid var(--sage);background:var(--sage-pl)}
+.em-s{flex:1;font-size:.86rem;min-width:150px}
+.em-n{font-family:'Courier New',monospace;font-size:1rem;font-weight:700;white-space:nowrap}
+.emrow.red .em-n{color:var(--terra)}.emrow.grn .em-n{color:var(--sage-dk)}
+.em-note{font-size:.72rem;color:var(--fog);font-style:italic;flex-basis:100%}
+
+/* ═══════════════════════ NEIGHBOURHOOD CARDS ═════════════════ */
+.nbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:.95rem}
+.nbc{background:#fff;border:1px solid var(--beige-dk);border-radius:var(--rad-lg);padding:1.3rem;display:flex;flex-direction:column;gap:.42rem;transition:box-shadow .2s,transform .2s}
+.nbc:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.nbc.dk{background:var(--bark);border-color:transparent}
+.nbc.dk .nbn{color:var(--sage-lt)}.nbc.dk .nba{color:rgba(253,250,244,.38)}.nbc.dk .nbd{color:rgba(253,250,244,.68)}
+.nbi{font-size:1.75rem}
+.nbn{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--bark);line-height:1.2}
+.nba{font-size:.72rem;color:var(--fog)}
+.nbd{font-size:.81rem;color:var(--bark-md);line-height:1.5}
+.nbtags{display:flex;gap:.32rem;flex-wrap:wrap;margin-top:.2rem}
+.tg{font-size:.63rem;font-weight:500;padding:.14rem .5rem;border-radius:2rem;background:var(--sage-pl);color:var(--sage-dk)}
+.tg.g{background:var(--gold-lt);color:#5C3A0A}
+.tg.t{background:var(--terra-lt);color:var(--terra)}
+
+/* Park box */
+.parkbox{background:var(--sage-pl);border:1px solid var(--sage-lt);border-radius:var(--rad-lg);padding:1.75rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.parkbox h3{font-family:var(--fd);font-size:1.3rem;color:var(--bark);margin-bottom:.5rem}
+.parkbox p{font-size:.84rem;color:var(--bark-md);line-height:1.6}
+.parkul{list-style:none;display:flex;flex-direction:column;gap:.32rem;margin-top:.65rem}
+.parkul li{font-size:.81rem;display:flex;gap:.55rem}
+.parkul li::before{content:'›';color:var(--sage);font-weight:700;flex-shrink:0}
+@media(max-width:560px){.parkbox{grid-template-columns:1fr}}
+
+/* Transport table */
+.ttable{width:100%;border-collapse:collapse;font-size:.82rem;margin:.75rem 0}
+.ttable th{background:var(--bark);color:var(--beige);padding:.6rem .9rem;text-align:left;font-weight:400;letter-spacing:.06em;font-size:.7rem;text-transform:uppercase}
+.ttable td{padding:.6rem .9rem;border-bottom:1px solid var(--beige-dk);vertical-align:top;color:var(--bark)}
+.ttable tr:last-child td{border-bottom:none}
+.ttable tr:nth-child(even) td{background:var(--beige)}
+.ttable .badge{display:inline-block;background:var(--sage);color:#fff;font-size:.65rem;padding:.1rem .45rem;border-radius:2rem;font-weight:500;margin-right:.25rem;white-space:nowrap}
+.ttable .badge.b{background:#2255AA}.ttable .badge.r{background:#B8302A}
+.ttable .badge.o{background:#C66000}
+
+/* ═══════════════════════ CHECKLIST ═══════════════════════════ */
+.cl-head{
+  background:var(--bark);padding:1.6rem 1.5rem;
+  border-radius:0 0 var(--rad-lg) var(--rad-lg);
+}
+.cl-progress-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:.55rem}
+.cl-pct{font-family:var(--fd);font-size:2.4rem;color:var(--sage-lt)}
+.cl-ptxt{font-size:.76rem;color:var(--fog);text-align:right}
+.cl-track{height:7px;background:rgba(255,255,255,.1);border-radius:8px;overflow:hidden}
+.cl-fill{height:100%;background:linear-gradient(90deg,var(--sage-dk),var(--sage-lt));border-radius:8px;transition:width .5s ease;width:0%}
+
+/* Guest form */
+.gform{
+  background:#fff;border:1px solid var(--beige-dk);border-radius:var(--rad-lg);
+  padding:1.5rem;margin-bottom:1.5rem;
+}
+.gform-t{font-family:var(--fd);font-size:1.2rem;color:var(--bark);margin-bottom:1.1rem;font-style:italic}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:480px){.fgrid{grid-template-columns:1fr}}
+.fg label{font-size:.64rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-dk);display:block;margin-bottom:.32rem}
+.fg input,.fg textarea{
+  width:100%;padding:.55rem .75rem;border:1px solid var(--beige-dk);border-radius:8px;
+  font-family:var(--fb);font-size:.88rem;color:var(--bark);background:var(--cream);
+  outline:none;transition:border-color .2s;resize:none;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--sage)}
+.fg.full{grid-column:1/-1}
+
+/* Checklist tabs */
+.cltabs{
+  display:flex;background:#fff;border-bottom:1px solid var(--beige-dk);
+  position:sticky;top:52px;z-index:100;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+@media(max-width:640px){
+  .cltabs{top:48px;overflow-x:scroll}
+}
+.cltabs::-webkit-scrollbar{display:none}
+.clt{
+  flex:0 0 auto;padding:.75rem .6rem;text-align:center;
+  cursor:pointer;font-family:var(--fb);font-size:.68rem;font-weight:400;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--fog);
+  border:none;background:none;border-bottom:3px solid transparent;
+  transition:all .18s;white-space:nowrap;
+}
+@media(max-width:640px){
+  .clt{font-size:.62rem;padding:.7rem .45rem;letter-spacing:.03em}
+  .clt .cnt{font-size:.55rem;padding:.06rem .28rem}
+}
+.clt:hover{color:var(--sage-dk)}
+.clt.on{color:var(--sage-dk);border-bottom-color:var(--sage);font-weight:500}
+.clt .cnt{display:inline-block;background:var(--sage-pl);color:var(--sage-dk);font-size:.6rem;padding:.08rem .36rem;border-radius:2rem;margin-left:.22rem;font-weight:600}
+.clt.on .cnt{background:var(--sage);color:#fff}
+
+/* Panels */
+.clpanel{display:none}
+.clpanel.on{display:block;animation:fadeUp .28s ease}
+
+/* Checklist intro */
+.cl-intro{background:var(--sage-pl);border:1px solid var(--sage-lt);border-radius:var(--rad-lg);padding:1.15rem 1.35rem;margin-bottom:1.5rem;display:flex;gap:.85rem;align-items:flex-start}
+.cl-intro-ico{font-size:1.65rem;flex-shrink:0}
+.cl-intro-t{font-family:var(--fd);font-size:1.1rem;color:var(--bark)}
+.cl-intro-s{font-size:.8rem;color:var(--bark-md);margin-top:.14rem;line-height:1.45}
+
+/* Groups & items */
+.clg{margin-bottom:1.6rem}
+.clglbl{font-size:.63rem;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--sage-dk);display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem}
+.clglbl::after{content:'';flex:1;height:1px;background:var(--beige-dk)}
+
+.clitem{
+  display:flex;align-items:flex-start;gap:.85rem;
+  background:#fff;border:1px solid var(--beige-dk);
+  border-radius:10px;padding:.82rem 1rem;margin-bottom:.48rem;
+  cursor:pointer;transition:all .18s;user-select:none;
+}
+.clitem:hover{background:var(--sage-pl);border-color:var(--sage-lt)}
+.clitem.ck{background:var(--sage-pl);border-color:var(--sage-lt);opacity:.7}
+.clitem.ck .clt-fr,.clitem.ck .clt-en{text-decoration:line-through;color:var(--fog)}
+
+.clbox{width:20px;height:20px;flex-shrink:0;border:2px solid var(--beige-dk);border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .18s;margin-top:1px;background:#fff}
+.clitem.ck .clbox{background:var(--sage);border-color:var(--sage)}
+.clchk{opacity:0;transition:opacity .14s;font-size:.72rem;color:#fff}
+.clitem.ck .clchk{opacity:1}
+.cltxt{flex:1}
+.clt-fr,.clt-en{font-size:.86rem;color:var(--bark);line-height:1.4}
+.clt-en{display:block;font-size:.77rem;color:var(--fog);font-style:italic;margin-top:.06rem}
+
+/* Done card */
+.cldone{background:var(--bark);border-radius:var(--rad-lg);padding:2rem;text-align:center;margin-top:1.5rem;display:none;position:relative;overflow:hidden}
+.cldone.on{display:block;animation:fadeUp .35s ease}
+.cldone::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 30% 40%,rgba(109,148,103,.42),transparent 60%)}
+.cldone *{position:relative;z-index:1}
+.cldone-ico{font-size:2.3rem;display:block;margin-bottom:.65rem}
+.cldone-t{font-family:var(--fd);font-size:1.45rem;color:var(--beige);margin-bottom:.3rem}
+.cldone-s{font-size:.83rem;color:var(--fog)}
+
+/* Signature */
+.sigbox{background:#fff;border:1px solid var(--beige-dk);border-radius:var(--rad-lg);padding:1.4rem;margin-top:1.75rem}
+.sigt{font-family:var(--fd);font-size:1.05rem;color:var(--bark);font-style:italic;margin-bottom:1rem}
+
+/* ═══════════════════════ REPORT / SEND ═══════════════════════ */
+.report-box{
+  margin-top:2rem;background:var(--bark);border-radius:var(--rad-lg);
+  padding:1.75rem;position:relative;overflow:hidden;
+}
+.report-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 60%,rgba(109,148,103,.32),transparent 55%)}
+.report-box *{position:relative;z-index:1}
+.report-t{font-family:var(--fd);font-size:1.3rem;color:var(--beige);margin-bottom:.3rem}
+.report-s{font-size:.8rem;color:var(--fog);margin-bottom:1.25rem;line-height:1.5}
+.report-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.rbtn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.65rem 1.35rem;border-radius:2rem;border:none;
+  font-family:var(--fb);font-size:.8rem;font-weight:500;cursor:pointer;
+  transition:all .2s;letter-spacing:.04em;text-decoration:none;
+}
+.rbtn.wa{background:#25D366;color:#fff}
+.rbtn.wa:hover{background:#1DA851}
+.rbtn.em{background:rgba(255,255,255,.12);color:var(--beige);border:1px solid rgba(255,255,255,.22)}
+.rbtn.em:hover{background:rgba(255,255,255,.2)}
+.feedback-area{
+  width:100%;padding:.7rem .85rem;border:1px solid rgba(255,255,255,.18);
+  border-radius:10px;background:rgba(255,255,255,.07);
+  font-family:var(--fb);font-size:.86rem;color:var(--beige);
+  resize:vertical;min-height:80px;outline:none;margin-bottom:1.25rem;
+}
+.feedback-area::placeholder{color:rgba(255,255,255,.3)}
+.feedback-area:focus{border-color:var(--sage-lt)}
+.preview-box{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;padding:1rem;font-size:.76rem;color:rgba(255,255,255,.6);
+  white-space:pre-wrap;word-break:break-word;max-height:200px;overflow-y:auto;
+  margin-bottom:1.25rem;display:none;font-family:'Courier New',monospace;line-height:1.6;
+}
+.preview-box.on{display:block}
+
+/* Reset */
+
+/* ─── Remark fields inside checklist items ─── */
+.remark-wrap{margin-top:.55rem;display:flex;flex-direction:column;gap:.22rem}
+.remark-lbl{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-dk);opacity:.7}
+.remark-ta{
+  width:100%;padding:.38rem .6rem;border:1px solid var(--beige-dk);border-radius:6px;
+  font-family:var(--fb);font-size:.8rem;color:var(--bark);background:var(--cream);
+  outline:none;resize:none;transition:border-color .18s;line-height:1.45;min-height:34px;
+}
+.remark-ta:focus{border-color:var(--sage)}
+.clitem:hover .remark-ta{background:#fff}
+
+
+/* How-to step numbers inline */
+.step-num-inline{
+  width:22px;height:22px;flex-shrink:0;
+  background:var(--sage-dk);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:600;margin-top:1px;
+}
+/* How-to remote img responsive */
+@media(max-width:600px){
+  #pg-howto .main-remote-grid{grid-template-columns:1fr !important}
+}
+
+.reset-btn{display:block;margin:1.25rem auto 0;padding:.52rem 1.3rem;background:none;border:1px solid var(--beige-dk);border-radius:2rem;color:var(--fog);font-family:var(--fb);font-size:.74rem;cursor:pointer;transition:all .2s}
+.reset-btn:hover{border-color:var(--terra);color:var(--terra)}
+
+/* ═══════════════════════ INFO CHIPS (checklist info tab) ══════ */
+.ipc{background:#fff;border:1px solid var(--beige-dk);border-radius:var(--rad-lg);padding:1.2rem;margin-bottom:.8rem}
+.ipc-l{font-size:.63rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--sage-dk);margin-bottom:.7rem}
+.crow{display:flex;justify-content:space-between;align-items:center;padding:.52rem .78rem;border-radius:8px;margin-bottom:.42rem;font-size:.84rem}
+.crow.s{background:var(--sage-pl)}.crow.r{background:var(--terra-lt)}.crow.b{background:var(--beige)}
+.crow-n{font-family:'Courier New',monospace;font-weight:700;text-decoration:none;color:inherit}
+.crow.r .crow-n{color:var(--terra)}.crow.s .crow-n{color:var(--sage-dk)}
+
+/* ═══════════════════════ FOOTER ══════════════════════════════ */
+.footer{background:var(--bark);color:var(--fog);text-align:center;padding:2.25rem 1.5rem;font-size:.8rem}
+.footer strong{color:var(--beige)}
+.footer a{color:var(--sage-lt)}
+</style>
+</head>
+<body class="lang-en">
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="tb-logo" onclick="nav('home')">Boileau <span>3</span></div>
+  <div class="tb-nav">
+    <button class="nb on" id="nb-home" onclick="nav('home')">🏠 <span class="fr">Accueil</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Home</span></button>
+    <button class="nb" id="nb-guide" onclick="nav('guide')">📋 <span class="fr">Maison</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Guide</span></button>
+    <button class="nb" id="nb-quartier" onclick="nav('quartier')">🌿 <span class="fr">Quartier</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Area</span></button>
+    <button class="nb" id="nb-checklist" onclick="nav('checklist')">✅ <span class="fr">Check-list</span><span class="en">Checklist</span></button>
+    <button class="nb" id="nb-howto" onclick="nav('howto')">🛠️ How-to</button>
+    <div class="tb-lang">
+      <button class="lb" onclick="setLang('fr',this)">FR</button>
+      <button class="lb on" onclick="setLang('en',this)">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════ HOME ════════════════════════════════ -->
+<div class="page on" id="pg-home">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <span class="h-tag">📍 Etterbeek · Bruxelles · 1040</span>
+      <h1 class="h1">Avenue<em>Boileau 3</em></h1>
+      <p class="h-sub">
+        <span class="fr">Appartement 1 · 1<sup>er</sup> étage · Bienvenue chez vous</span>
+        <span class="en">Apartment 1 · 1st floor · Welcome home</span>
+      </p>
+      <div class="hcards">
+        <div class="hcard" onclick="nav('guide')">
+          <span class="hc-ico">📋</span>
+          <p class="hc-t"><span class="fr">Guide de la Maison</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">House Guide</span></p>
+          <p class="hc-d"><span class="fr">WiFi, clés, cuisine, chauffage, déchets, urgences.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">WiFi, keys, kitchen, heating, waste, emergencies.</span></p>
+          <span class="hc-arrow"><span class="fr">Ouvrir →</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Open →</span></span>
+        </div>
+        <div class="hcard" onclick="nav('quartier')">
+          <span class="hc-ico">🌿</span>
+          <p class="hc-t"><span class="fr">Guide du Quartier</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Neighbourhood Guide</span></p>
+          <p class="hc-d"><span class="fr">Cafés, restos, parc, transports, secrets locaux.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Cafés, restaurants, park, transport, local gems.</span></p>
+          <span class="hc-arrow"><span class="fr">Découvrir →</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Explore →</span></span>
+        </div>
+        <div class="hcard" onclick="nav('checklist')">
+          <span class="hc-ico">✅</span>
+          <p class="hc-t"><span class="fr">Check-list</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Checklist</span></p>
+          <p class="hc-d"><span class="fr">Arrivée, vie quotidienne, départ — tout en un clic.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Arrival, daily life, departure — all in one place.</span></p>
+          <span class="hc-arrow"><span class="fr">Commencer →</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Start →</span></span>
+        </div>
+        <div class="hcard" style="cursor:default">
+          <span class="hc-ico">📶</span>
+          <p class="hc-t" style="color:var(--beige)">WiFi</p>
+          <p style="font-family:'Courier New',monospace;color:var(--sage-lt);font-size:.95rem;margin:.3rem 0 .15rem">LANgoustine</p>
+          <p style="font-family:'Courier New',monospace;color:rgba(168,196,162,.65);font-size:.88rem">arukigaya</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <strong>Avenue Boileau 3 · Apt 1 · 1040 Etterbeek</strong><br>
+    Eva <a href="tel:0485114070">0485 11 40 70</a> · Elias <a href="tel:0478804513">0478 80 45 13</a>
+  </div>
+</div>
+
+<!-- ══════════════════════ GUIDE MAISON ═══════════════════════ -->
+<div class="page" id="pg-guide">
+  <div class="phero">
+    <div class="phero-bg"></div>
+    <div class="phero-inner">
+      <span class="ptag"><span class="fr">Guide de la Maison</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">House Guide</span></span>
+      <h2 class="ph1"><span class="fr">Votre <em>Maison</em></span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Your <em>Home</em></span></h2>
+      <p class="ph-sub">Avenue Boileau 3 · Apt 1 · 1<sup>er</sup> étage · 1040 Etterbeek</p>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <div class="slbl rv">📋 <span class="fr">Infos Essentielles</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Essential Info</span></div>
+    <div class="igrid rv">
+      <div class="icard"><p class="ic-l">📍 <span class="fr">Adresse</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Address</span></p><p class="ic-v">Avenue Boileau 3<br>Apt 1 · 1<sup>er</sup> étage<br>1040 Etterbeek</p></div>
+      <div class="icard"><p class="ic-l">📞 Eva</p><p class="ic-v">0485 11 40 70</p></div>
+      <div class="icard"><p class="ic-l">📞 Elias</p><p class="ic-v">0478 80 45 13</p></div>
+      <div class="icard"><p class="ic-l">🔑 <span class="fr">Clés</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Keys</span></p><p class="ic-v"><span class="fr">2 clés : bâtiment + appartement<br><small style="color:var(--fog)">Pas de clé de chambre</small></span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">2 keys: building + apartment<br><small style="color:var(--fog)">No room key</small></span></p></div>
+    </div>
+
+    <div class="wblock rv">
+      <div class="wi"><p class="wl">📶 <span class="fr">Réseau</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Network</span></p><p class="wv">LANgoustine</p></div>
+      <div class="wi"><p class="wl">🔒 <span class="fr">Mot de passe</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Password</span></p><p class="wv pw">arukigaya</p></div>
+    </div>
+    <div class="al warn rv"><span class="al-i">⚠️</span><span><span class="fr">Ne copiez pas les clés sans accord préalable. Frais de remplacement en cas de perte.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Do not copy keys without prior agreement. A replacement fee applies if lost.</span></span></div>
+
+    <div class="hr"></div>
+    <div class="slbl rv">🛏️ <span class="fr">Votre Chambre</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Your Room</span></div>
+    <div class="igrid rv">
+      <div class="icard"><p class="ic-l">🛋️ <span class="fr">Couchage</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Sleeping</span></p><p class="ic-v"><span class="fr">Canapé-lit</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Sofa-bed</span></p></div>
+      <div class="icard"><p class="ic-l">🛁 <span class="fr">Linge fourni</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Linen provided</span></p><p class="ic-v"><span class="fr">Draps, oreillers, couverture, serviettes de bain</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Sheets, pillows, duvet, bath towels</span></p></div>
+      <div class="icard"><p class="ic-l">👔 <span class="fr">Rangement</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Storage</span></p><p class="ic-v"><span class="fr">Armoire</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Wardrobe</span></p></div>
+      <div class="icard"><p class="ic-l">💻 <span class="fr">Travail</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Work</span></p><p class="ic-v"><span class="fr">Bureau + chaise</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Desk + chair</span></p></div>
+    </div>
+    <div class="al info rv"><span class="al-i">🧺</span><span><span class="fr">Linge à votre charge — utilisez votre propre lessive. Machine à laver : cave niveau -1.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Linen is your responsibility — use your own detergent. Washing machine: basement level -1.</span></span></div>
+
+    <div class="hr"></div>
+    <div class="slbl rv">🍳 <span class="fr">Cuisine Partagée</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Shared Kitchen</span></div>
+    <ul class="rlist rv">
+      <li><span class="ri">🧽</span><div><span class="fr">Nettoyer après chaque utilisation</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Clean after each use</span></div></li>
+      <li><span class="ri">🧊</span><div><span class="fr">Place attitrée dans le frigo pour chaque locataire</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Dedicated fridge shelf per tenant</span></div></li>
+      <li><span class="ri">🚫</span><div><span class="fr">Pas de nourriture sur le plan de travail</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">No food left on the counter</span></div></li>
+      <li><span class="ri">🗑️</span><div><span class="fr">Jeter les aliments périmés régulièrement</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Dispose of expired food regularly</span></div></li>
+    </ul>
+    <p class="sh rv"><span class="fr">Équipements</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Appliances</span></p>
+    <div class="igrid rv" style="grid-template-columns:repeat(auto-fit,minmax(108px,1fr))">
+      <div class="icard" style="text-align:center">🧊<br><span class="ic-l" style="font-size:.68rem;display:block;margin-top:.28rem"><span class="fr">Réfrigérateur</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Fridge</span></span></div>
+      <div class="icard" style="text-align:center">🔥<br><span class="ic-l" style="font-size:.68rem;display:block;margin-top:.28rem"><span class="fr">Four + Plaques</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Oven + Hob</span></span></div>
+      <div class="icard" style="text-align:center">📡<br><span class="ic-l" style="font-size:.68rem;display:block;margin-top:.28rem">Micro-ondes</span></div>
+      <div class="icard" style="text-align:center">☕<br><span class="ic-l" style="font-size:.68rem;display:block;margin-top:.28rem"><span class="fr">Café</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Coffee</span></span></div>
+      <div class="icard" style="text-align:center">💧<br><span class="ic-l" style="font-size:.68rem;display:block;margin-top:.28rem"><span class="fr">Bouilloire</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Kettle</span></span></div>
+    </div>
+
+    <div class="hr"></div>
+    <div class="slbl rv">📜 <span class="fr">Règles de Vie</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">House Rules</span></div>
+    <ul class="rlist rv">
+      <li><span class="ri">🔇</span><div><span class="fr">Silence entre 22h et 8h</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Quiet hours 10pm – 8am</span></div></li>
+      <li><span class="ri">🎉</span><div><span class="fr">Tu organises quelque chose ? Préviens-nous à l'avance, on s'arrange</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Planning something? Just give us a heads-up beforehand</span></div></li>
+      <li><span class="ri">👥</span><div><span class="fr">Les amis sont les bienvenus — dis-le juste à Eva ou Elias si quelqu'un reste dormir</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Friends are always welcome — just let Eva or Elias know if someone's staying over</span></div></li>
+      <li><span class="ri">🚭</span><div><span class="fr">Interdit de fumer à l'intérieur</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">No smoking indoors</span></div></li>
+      <li><span class="ri">🚿</span><div><span class="fr">Salle de bain propre après chaque usage</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Bathroom clean after each use</span></div></li>
+    </ul>
+
+    <div class="hr"></div>
+    <div class="slbl rv">♻️ <span class="fr">Tri des Déchets</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Waste Sorting</span></div>
+    <p class="rv" style="font-size:.86rem;color:var(--bark-md);margin-bottom:1.2rem"><span class="fr">À Bruxelles le tri est obligatoire. Sortez les sacs sur le trottoir devant le bâtiment le jour du passage.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Sorting is mandatory in Brussels. Put bags on the pavement in front of the building on collection day.</span></p>
+    <div class="wgrid rv">
+      <div class="wc bl"><span class="we">🔵</span><span class="wn"><span class="fr">Sac Bleu</span><span class="en">Blue Bag</span></span><div class="wcn"><span class="fr">PMC : plastiques, métal, cartons</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">PMC: plastics, metal, cartons</span></div><div class="wd" style="color:#1B4FA0">Lundi / Monday</div></div>
+      <div class="wc or"><span class="we">🟠</span><span class="wn"><span class="fr">Sac Orange</span><span class="en">Orange Bag</span></span><div class="wcn"><span class="fr">Déchets alimentaires</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Food waste</span></div><div class="wd" style="color:#A03A00">Lundi / Monday</div></div>
+      <div class="wc gr"><span class="we">🟢</span><span class="wn"><span class="fr">Sac Vert</span><span class="en">Green Bag</span></span><div class="wcn"><span class="fr">Déchets de jardin</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Garden waste</span></div><div class="wd" style="color:#1A5C1A">Mardi / Tuesday</div></div>
+      <div class="wc wh"><span class="we">⚪</span><span class="wn"><span class="fr">Sac Blanc</span><span class="en">White Bag</span></span><div class="wcn"><span class="fr">Déchets résiduels</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Residual waste</span></div><div class="wd" style="color:#555">Jeudi / Thursday</div></div>
+      <div class="wc yl"><span class="we">🟡</span><span class="wn"><span class="fr">Sac Jaune</span><span class="en">Yellow Bag</span></span><div class="wcn"><span class="fr">Papiers, journaux</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Paper, newspapers</span></div><div class="wd" style="color:#755500">Jeudi / Thursday</div></div>
+    </div>
+    <div class="rv">
+      <div class="dpill"><div style="display:flex;align-items:center;gap:.7rem"><span class="dp-d"><span class="fr">Lundi</span><span class="en">Monday</span></span><div class="dp-t"><span class="bt bt-bl">🔵 PMC</span><span class="bt bt-or">🟠 <span class="fr">Alim.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Food</span></span></div></div><span class="dp-time">18h00 – 24h00</span></div>
+      <div class="dpill"><div style="display:flex;align-items:center;gap:.7rem"><span class="dp-d"><span class="fr">Mardi</span><span class="en">Tuesday</span></span><div class="dp-t"><span class="bt bt-gr">🟢 <span class="fr">Jardin</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Garden</span></span></div></div><span class="dp-time">05h00 – 12h00</span></div>
+      <div class="dpill"><div style="display:flex;align-items:center;gap:.7rem"><span class="dp-d"><span class="fr">Jeudi</span><span class="en">Thursday</span></span><div class="dp-t"><span class="bt bt-wh">⚪ <span class="fr">Résiduel</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Residual</span></span><span class="bt bt-yl">🟡 <span class="fr">Papier</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Paper</span></span></div></div><span class="dp-time">18h00 – 24h00</span></div>
+    </div>
+
+    <div class="hr"></div>
+    <div class="slbl rv">🚨 <span class="fr">Urgences & Contacts</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Emergencies & Contacts</span></div>
+    <div class="emlist rv">
+      <div class="emrow red"><span class="em-s">🚑 <span class="fr">Urgences</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Emergency</span> (Ambulance / Police / <span class="fr">Pompiers</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Fire</span>)</span><span class="em-n">112</span></div>
+      <div class="emrow red"><span class="em-s">🚓 Police <span class="fr">(non-urgence)</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">(non-emergency)</span></span><span class="em-n">101</span></div>
+      <div class="emrow"><span class="em-s">🏥 <span class="fr">Médecin de garde</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">On-call doctor</span></span><span class="em-n">1733</span><span class="em-note"><span class="fr">Nuit & week-end</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Night & weekend</span></span></div>
+      <div class="emrow"><span class="em-s">☠️ <span class="fr">Centre antipoison</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Poison center</span></span><span class="em-n">070 245 245</span><span class="em-note">24h/24</span></div>
+      <div class="emrow grn"><span class="em-s">👤 Eva</span><a href="tel:0485114070" class="em-n">0485 11 40 70</a></div>
+      <div class="emrow grn"><span class="em-s">👤 Elias</span><a href="tel:0478804513" class="em-n">0478 80 45 13</a></div>
+    </div>
+
+    <div class="hr"></div>
+    <div class="slbl rv">⚙️ <span class="fr">Équipements</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Equipment</span></div>
+    <ul class="rlist rv">
+      <li><span class="ri">🌡️</span><div><b class="fr">Chauffage central au gaz</b><b class="en">Central gas heating</b><span class="re"><span class="fr">Thermostat près de la porte du salon · Réglez la température puis ajustez les vannes de chaque radiateur</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Thermostat near living room door · Set temperature, then adjust each radiator valve</span></span></div></li>
+      <li><span class="ri">⚡</span><div><b class="fr">Tableau électrique (disjoncteur)</b><b class="en">Fuse box</b><span class="re"><span class="fr">Dans les toilettes · Si ça disjoncte : débranchez l'appareil en cause, remettez le levier en position haute. Si ça recommence → contactez Eva ou Elias</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Located in the WC · If power trips: unplug the appliance causing it, flip the switch back up. If it trips again → contact Eva or Elias</span></span></div></li>
+      <li><span class="ri">🧺</span><div><b class="fr">Lave-linge + sèche-linge</b><b class="en">Washer + dryer</b><span class="re"><span class="fr">Cave, niveau -1 · Utilisez votre propre lessive</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Basement, level -1 · Use your own detergent</span></span></div></li>
+    </ul>
+
+    <div class="hr"></div>
+    <div class="slbl rv">🏁 <span class="fr">Fin de Séjour</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">End of Stay</span></div>
+    <ul class="rlist rv">
+      <li><span class="ri">🔑</span><div><span class="fr">Remettre les 2 clés à Eva ou Elias</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Return both keys to Eva or Elias</span></div></li>
+      <li><span class="ri">🛏️</span><div><span class="fr">Chambre propre, linge lavé et rangé</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Room clean, linen washed and stored</span></div></li>
+      <li><span class="ri">🧊</span><div><span class="fr">Réfrigérateur vidé et nettoyé</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Fridge empty and cleaned</span></div></li>
+      <li><span class="ri">♻️</span><div><span class="fr">Dernier tri des déchets</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Final round of waste sorting</span></div></li>
+      <li><span class="ri">🪟</span><div><span class="fr">Fenêtres fermées, lumières et appareils éteints</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Windows closed, lights and appliances off</span></div></li>
+    </ul>
+    <div class="al info rv" style="justify-content:center;border-left:none;border-radius:var(--rad-lg);margin-top:1.5rem;padding:1.35rem">
+      <span style="font-family:var(--fd);font-style:italic;font-size:.98rem;color:var(--sage-dk)">
+        <span class="fr">Merci pour votre séjour — bonne continuation à Bruxelles ! 🌿</span>
+        <span class="en">Thank you for your stay — all the best in Brussels! 🌿</span>
+      </span>
+    </div>
+  </div>
+  <div class="footer"><strong>Avenue Boileau 3 · Apt 1 · 1040 Etterbeek</strong><br>Eva <a href="tel:0485114070">0485 11 40 70</a> · Elias <a href="tel:0478804513">0478 80 45 13</a></div>
+</div>
+
+<!-- ══════════════════════ GUIDE QUARTIER ═════════════════════ -->
+<div class="page" id="pg-quartier">
+  <div class="phero">
+    <div class="phero-bg"></div>
+    <div class="phero-inner">
+      <span class="ptag"><span class="fr">Guide du Quartier · Etterbeek 1040</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Neighbourhood Guide · Etterbeek 1040</span></span>
+      <h2 class="ph1"><span class="fr">Bienvenue à <em>Etterbeek</em></span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Welcome to <em>Etterbeek</em></span></h2>
+      <p class="ph-sub"><span class="fr">Village dans la ville · Quartier européen · Cafés, parcs, culture, secrets</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Village within the city · EU quarter · Cafés, parks, culture, hidden gems</span></p>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <!-- TRANSPORTS -->
+    <div class="slbl rv">🚇 <span class="fr">Transports depuis Avenue Boileau</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Getting Around from Avenue Boileau</span></div>
+    <div class="al info rv"><span class="al-i">💡</span><span><span class="fr"><strong>Le tram 7 et le tram 25 s'arrêtent arrêt « Boileau »</strong> — juste devant votre porte. Accès direct au centre-ville et aux institutions européennes.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en"><strong>Trams 7 and 25 stop at « Boileau »</strong> — right outside your door. Direct access to the city centre and EU institutions.</span></span></div>
+    <table class="ttable rv">
+      <thead><tr><th><span class="fr">Ligne</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Line</span></th><th><span class="fr">Type</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Type</span></th><th><span class="fr">Arrêt / Destination</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Stop / Destination</span></th><th><span class="fr">Temps</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Time</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge o">T7</span><span class="badge o">T25</span></td><td><span class="fr">Tram</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Tram</span></td><td><span class="fr">Arrêt Boileau (devant la porte) → centre, Gare du Midi</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Stop Boileau (at your door) → city centre, Midi station</span></td><td>~2 min</td></tr>
+        <tr><td><span class="badge b">M1</span><span class="badge b">M5</span></td><td>Métro</td><td><span class="fr">Mérode (Parc Cinquantenaire) · Schuman (EU) · Montgomery</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Mérode (Cinquantenaire Park) · Schuman (EU) · Montgomery</span></td><td>8–12 min</td></tr>
+        <tr><td><span class="badge b">M5</span></td><td>Métro</td><td><span class="fr">Thieffry, Pétillon → Herrmann-Debroux</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Thieffry, Pétillon → Herrmann-Debroux</span></td><td>5–10 min</td></tr>
+        <tr><td><span class="badge">27 · 36 · 60</span></td><td>Bus</td><td><span class="fr">Lignes STIB dans le quartier</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">STIB bus lines in the area</span></td><td>—</td></tr>
+        <tr><td><span class="badge" style="background:var(--bark)">Villo!</span></td><td><span class="fr">Vélo partagé</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Bike share</span></td><td><span class="fr">Stations à proximité — app Villo ou STIB Go</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Stations nearby — Villo or STIB Go app</span></td><td>—</td></tr>
+        <tr><td><span class="badge r">🅿️ Vélo</span></td><td><span class="fr">Parking vélo</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Bike parking</span></td><td><span class="fr">Disponible sur demande — contactez Eva ou Elias</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Available on request — contact Eva or Elias</span></td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <!-- PARC -->
+    <div class="hr"></div>
+    <div class="slbl rv">🌳 <span class="fr">Parc du Cinquantenaire</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Cinquantenaire Park</span></div>
+    <div class="parkbox rv">
+      <div>
+        <h3 class="fr">Le poumon vert — 8 min à pied</h3>
+        <h3 class="en">The green lung — 8 min walk</h3>
+        <p class="fr">Deuxième plus grand parc de Bruxelles avec ses <strong>30 hectares</strong>. Arc de triomphe construit en 1880 pour les 50 ans de l'indépendance belge. Lieu de vie des eurocrates et des familles du quartier.</p>
+        <p class="en">Brussels' second largest park, <strong>30 hectares</strong>. Triumphal arch built in 1880 for Belgium's 50th anniversary. Beloved by EU workers and local families alike.</p>
+        <ul class="parkul">
+          <li class="fr">Jogging, pétanque, football, basketball, fitness</li><li class="en">Running, pétanque, football, basketball, outdoor gym</li>
+          <li class="fr">Yoga & pique-niques les midis ensoleillés</li><li class="en">Yoga & picnics on sunny lunchtimes</li>
+          <li class="fr">Concerts, fêtes médiévales, apéros urbains</li><li class="en">Concerts, medieval fairs, urban aperitifs</li>
+          <li class="fr">Toit de l'arc accessible — vue 360° sur Bruxelles</li><li class="en">Arch rooftop accessible — 360° panoramic view</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="fr">Les 3 musées</h3><h3 class="en">The 3 museums</h3>
+        <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.4rem">
+          <div class="icard" style="padding:.88rem">
+            <p style="font-size:1.05rem">🏺</p>
+            <p class="ic-v"><span class="fr">Musée Art & Histoire</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Art & History Museum</span></p>
+            <p style="font-size:.75rem;color:var(--fog);margin-top:.15rem"><span class="fr">Égypte, Grèce, Rome, Art Déco · Gratuit merc. ap-m.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Egypt, Greece, Rome, Art Deco · Free Wed. afternoon</span></p>
+          </div>
+          <div class="icard" style="padding:.88rem">
+            <p style="font-size:1.05rem">🪖</p>
+            <p class="ic-v"><span class="fr">Musée Royal de l'Armée</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Royal Military Museum</span></p>
+            <p style="font-size:.75rem;color:var(--fog);margin-top:.15rem"><span class="fr">Avions, tanks — l'un des plus grands d'Europe</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Planes, tanks — one of Europe's largest</span></p>
+          </div>
+          <div class="icard" style="padding:.88rem">
+            <p style="font-size:1.05rem">🚗</p>
+            <p class="ic-v">Autoworld</p>
+            <p style="font-size:.75rem;color:var(--fog);margin-top:.15rem"><span class="fr">300 véhicules de 1886 aux années 60</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">300 vehicles from 1886 to the 1960s</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="al gold rv"><span class="al-i">✨</span><span><b><span class="fr">Secret local : </span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Local secret: </span></b><span class="fr">Le toit de l'arc de triomphe est accessible gratuitement — vue époustouflante au coucher de soleil. Peu de touristes le savent.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">The triumphal arch rooftop is freely accessible — breathtaking at sunset. Few tourists know this.</span></span></div>
+
+    <!-- CAFÉS -->
+    <div class="hr"></div>
+    <div class="slbl rv">☕ <span class="fr">Cafés & Brunch</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Cafés & Brunch</span></div>
+    <div class="nbgrid rv">
+      <div class="nbc dk">
+        <span class="nbi">☕</span>
+        <p class="nbn">Seven Cinquantenaire</p>
+        <p class="nba">Av. d'Auderghem 68–70 · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">All-day café & eatery — brunch maison exceptionnel. Produits locaux et saisonniers, design minimaliste. Avocado toast, folded eggs, granola bowl. Ouvert 7j/7 8h–17h.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">All-day café & eatery — exceptional homemade brunch. Local, seasonal produce, minimalist design. Open 7 days, 8am–5pm.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Top brunch</span><span class="tg">Specialty coffee</span><span class="tg">7j/7</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🔬</span>
+        <p class="nbn">OR Coffee</p>
+        <p class="nba">Place Jourdan 13a · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Pioneer du café specialty à Bruxelles depuis 2001. Torréfaction directe, café filtre d'exception, wi-fi gratuit. Décor industriel, bagels NYC-style.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Brussels specialty coffee pioneer since 2001. Direct-trade roasting, exceptional filter coffee, free wi-fi. Industrial décor, NYC bagels.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Pioneer</span><span class="tg">Wi-Fi</span><span class="tg">Direct trade</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🌱</span>
+        <p class="nbn">BOUCHE Specialty Coffee</p>
+        <p class="nba">Rue Froissart 43A · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Note Google 4.7 — flat white légendaire, petit-déjeuner très soigné, accueil chaleureux. Cookies & banana bread maison. Entre Place Jourdan et Schuman.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Google 4.7 — legendary flat white, careful breakfast, warm welcome. Homemade cookies & banana bread. Between Place Jourdan and Schuman.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ 4.7</span><span class="tg">Froissart</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🥖</span>
+        <p class="nbn">Le Pain Quotidien</p>
+        <p class="nba">Rue des Tongres · Etterbeek</p>
+        <p class="nbd"><span class="fr">La chaîne belge mondialement connue dans son quartier d'origine. Tables en bois massif, tartines généreuses, brunch végé ou classique.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">The globally known Belgian chain, right in its home neighbourhood. Communal wooden tables, generous tartines, veggie or classic brunch.</span></p>
+        <div class="nbtags"><span class="tg">Brunch</span><span class="tg">Végé-friendly</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🧁</span>
+        <p class="nbn">Eddy Clavie</p>
+        <p class="nba">39 Rue des Tongres · Galerie du Cinquantenaire</p>
+        <p class="nbd"><span class="fr">Café chaleureux niché dans la Galerie du Cinquantenaire. Brunch, boissons chaudes, pâtisseries. Adresse confidentielle des habitués.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Cosy café tucked in the Cinquantenaire Gallery. Brunch, hot drinks, pastries. The neighbourhood regulars' secret spot.</span></p>
+        <div class="nbtags"><span class="tg">Galerie</span><span class="tg t">Confidentiel</span></div>
+      </div>
+    </div>
+
+    <!-- RESTAURANTS -->
+    <div class="hr"></div>
+    <div class="slbl rv">🍽️ <span class="fr">Restaurants</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Restaurants</span></div>
+    <div class="nbgrid rv">
+      <div class="nbc dk">
+        <span class="nbi">🍟</span>
+        <p class="nbn">Maison Antoine</p>
+        <p class="nba">Place Jourdan 1 · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Institution fondée en 1948 — élue meilleure friterie de Belgique. Frites fraîches coupées à la main, sauces maison, mitraillettes légendaires. File quasi permanente — elle est méritée. Prenez vos frites et mangez-les en terrasse dans un bar de la place.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Institution since 1948 — voted Belgium's best chip shop. Hand-cut fresh fries, homemade sauces, legendary mitraillettes sandwiches. Almost always a queue — worth every second. Get your fries and eat on a café terrace on the square.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Depuis 1948</span><span class="tg">Ouvert tard</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🍜</span>
+        <p class="nbn">Hanoi Station</p>
+        <p class="nba">Avenue des Celtes 6 · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Meilleure adresse vietnamienne de Bruxelles face au Cinquantenaire. Pho, bo bun, pad thai dans un bâtiment Art Nouveau. Vue sur rue depuis le 1er étage.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Brussels' best Vietnamese, facing the Cinquantenaire. Pho, bo bun, pad thai in an Art Nouveau building with street view from the 1st floor.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Meilleur Viêt</span><span class="tg">Art Nouveau</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🍕</span>
+        <p class="nbn">E…ccetera</p>
+        <p class="nba">Chaussée de Wavre 480 · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Meilleur italien de la Place Jourdan — service impeccable, cadre épuré, carte qui change chaque jour selon le marché.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Best Italian at Place Jourdan — impeccable service, clean décor, daily-changing menu based on the market.</span></p>
+        <div class="nbtags"><span class="tg">Italien</span><span class="tg t">Réservation conseillée</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🫙</span>
+        <p class="nbn">Freshmed</p>
+        <p class="nba">Rue de l'Escadron 35 · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Grande épicerie fine méditerranéenne : primeur, traiteur, boucher, boulanger, caviste. Spécialisé produits italiens & grecs. Parking privé gratuit en sous-sol. <strong>Lun 13h–20h · Mar–Sam 8h–20h · Dim 8h–13h</strong></span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Full Mediterranean deli: greengrocer, caterer, butcher, bakery, wine cellar. Italian & Greek specialist. Free underground parking. <strong>Mon 1–8pm · Tue–Sat 8am–8pm · Sun 8am–1pm</strong></span></p>
+        <div class="nbtags"><span class="tg g">⭐ Traiteur</span><span class="tg">Montgomery</span><span class="tg">Parking gratuit</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🍔</span>
+        <p class="nbn">Manhattn's Burgers</p>
+        <p class="nba">Avenue de Tervueren 9 · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Burgers artisanaux très bien notés. Soirée décontractée côté Mérode.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Highly rated craft burgers. Relaxed evening out near Mérode.</span></p>
+        <div class="nbtags"><span class="tg">Burgers</span><span class="tg">Mérode</span></div>
+      </div>
+    </div>
+    <div class="al gold rv"><span class="al-i">🛒</span><span><b><span class="fr">Marché de la Place Jourdan</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Place Jourdan Market</span></b> — <span class="fr">chaque dimanche 8h–13h · 36 étals permanents · fromages, fleurs, produits frais. Le cœur authentique d'Etterbeek.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">every Sunday 8am–1pm · 36 permanent stalls · cheese, flowers, fresh produce. The authentic heart of Etterbeek.</span></span></div>
+
+    <!-- BOIRE -->
+    <div class="hr"></div>
+    <div class="slbl rv">🍺 <span class="fr">Bars & After-Work</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Bars & After-Work</span></div>
+    <div class="nbgrid rv">
+      <div class="nbc dk">
+        <span class="nbi">🌆</span>
+        <p class="nbn">Place Jourdan</p>
+        <p class="nba">Place Jourdan · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">L'épicentre de l'after-work bruxellois. Prenez vos frites chez Antoine et installez-vous en terrasse dans un des bars voisins. Animé dès 17h, spécialement le jeudi et vendredi.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Brussels after-work epicentre. Get frites from Antoine and settle on a bar terrace. Buzzing from 5pm, especially Thursday and Friday.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Must do</span><span class="tg">Terrasse</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🍷</span>
+        <p class="nbn">Le Jardin du Sommelier</p>
+        <p class="nba"><span class="fr">Près de Schuman</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Near Schuman</span></p>
+        <p class="nbd"><span class="fr">Une des meilleures adresses vins du quartier européen — bar à vins et restaurant gastronomique.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">One of the best wine addresses in the EU quarter — wine bar and gastronomic restaurant.</span></p>
+        <div class="nbtags"><span class="tg">Bar à vins</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">📚</span>
+        <p class="nbn">Piola Libri</p>
+        <p class="nba"><span class="fr">Quartier européen</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">EU Quarter</span></p>
+        <p class="nbd"><span class="fr">Restaurant, bar à vins italiens et librairie à la fois. Un concept unique — du Piémont à la Sicile.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Restaurant, Italian wine bar and bookshop all in one. A unique concept from Piedmont to Sicily.</span></p>
+        <div class="nbtags"><span class="tg t">Concept unique</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🎭</span>
+        <p class="nbn">Atelier 210</p>
+        <p class="nba">Etterbeek</p>
+        <p class="nbd"><span class="fr">Salle de spectacle emblématique d'Etterbeek — concerts, théâtre, programmation éclectique. Programme sur atelier210.be</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Etterbeek's iconic venue — concerts, theatre, eclectic programming. Programme at atelier210.be</span></p>
+        <div class="nbtags"><span class="tg">Concerts</span><span class="tg">Théâtre</span></div>
+      </div>
+    </div>
+
+    <!-- SHOPPING -->
+    <div class="hr"></div>
+    <div class="slbl rv">🛍️ <span class="fr">Shopping & Commerces</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Shopping & Local Shops</span></div>
+    <div class="al info rv"><span class="al-i">🗺️</span><span><span class="fr"><b>Rue des Tongres & Rue des Celtes</b> (station Mérode) — le cœur commerçant du quartier : boutiques indépendantes, chocolatiers, boucheries artisanales.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en"><b>Rue des Tongres & Rue des Celtes</b> (Mérode station) — the neighbourhood's shopping heart: independent boutiques, chocolatiers, artisan butchers.</span></span></div>
+    <div class="nbgrid rv">
+      <div class="nbc">
+        <span class="nbi">🎲</span>
+        <p class="nbn">Dédale</p>
+        <p class="nba">Rue des Tongres</p>
+        <p class="nbd"><span class="fr">Librairie-jeux de société unique — coup de cœur des habitants. Vaste sélection, conseil personnalisé.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Unique bookshop and board game store — a neighbourhood favourite. Wide selection, personal advice.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Coup de cœur</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🍫</span>
+        <p class="nbn">Pierre Marcolini</p>
+        <p class="nba">Etterbeek</p>
+        <p class="nbd"><span class="fr">Chocolatier belge haut de gamme. Pralines d'exception, coffrets cadeaux.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Premium Belgian chocolatier. Exceptional pralines, gift boxes.</span></p>
+        <div class="nbtags"><span class="tg t">Luxe</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🥩</span>
+        <p class="nbn">Boucherie Lanssens</p>
+        <p class="nba">Rue des Tongres</p>
+        <p class="nbd"><span class="fr">Boucherie artisanale de quartier — qualité, conseil et savoir-faire à l'ancienne.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Traditional neighbourhood butcher — quality and old-fashioned expertise.</span></p>
+        <div class="nbtags"><span class="tg">Artisan</span></div>
+      </div>
+    </div>
+
+    <!-- CULTURE -->
+    <div class="hr"></div>
+    <div class="slbl rv">🏛️ <span class="fr">Culture & Architecture</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Culture & Architecture</span></div>
+    <div class="nbgrid rv">
+      <div class="nbc dk">
+        <span class="nbi">🎨</span>
+        <p class="nbn">Maison Cauchie</p>
+        <p class="nba">Rue des Francs 5 · 1040 Etterbeek</p>
+        <p class="nbd"><span class="fr">Joyau de l'Art Nouveau bruxellois (1905). Sgraffites uniques et pilastres ornés — demeure personnelle du sculpteur Paul Cauchie. Ouverte régulièrement au public.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Brussels Art Nouveau gem (1905). Unique sgraffiti and ornate pilasters — personal home of sculptor Paul Cauchie. Regularly open to the public.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Art Nouveau</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🏰</span>
+        <p class="nbn"><span class="fr">Squares Art Nouveau</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Art Nouveau Squares</span></p>
+        <p class="nba">Squares Ambiorix, Marie-Louise, Marguerite</p>
+        <p class="nbd"><span class="fr">Trois squares consécutifs bordés de maisons Art Nouveau spectaculaires. Une des plus belles promenades architecturales de Bruxelles, méconnue des touristes.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Three consecutive squares lined with spectacular Art Nouveau houses. One of Brussels' finest architectural walks, unknown to most tourists.</span></p>
+        <div class="nbtags"><span class="tg g">⭐ Insolite</span><span class="tg">Balade</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🗺️</span>
+        <p class="nbn"><span class="fr">Maison de l'Histoire Européenne</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">House of European History</span></p>
+        <p class="nba">Parc Léopold</p>
+        <p class="nbd"><span class="fr">Musée immersif sur l'histoire de l'Europe. Entrée gratuite, architecture contemporaine remarquable.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Immersive museum on Europe's history. Free entry, remarkable contemporary architecture.</span></p>
+        <div class="nbtags"><span class="tg">Gratuit · Free</span></div>
+      </div>
+      <div class="nbc">
+        <span class="nbi">🔬</span>
+        <p class="nbn"><span class="fr">Musée des Sciences Naturelles</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Natural History Museum</span></p>
+        <p class="nba">Rue Vautier 29 · 15 min à pied</p>
+        <p class="nbd"><span class="fr">Les iguanodons de Bernissart — la plus grande collection de dinosaures debout au monde.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Bernissart iguanodons — the world's largest collection of standing dinosaurs.</span></p>
+        <div class="nbtags"><span class="tg">Dinosaures</span></div>
+      </div>
+    </div>
+
+    <!-- SECRETS -->
+    <div class="hr"></div>
+    <div class="slbl rv">🗝️ <span class="fr">Coins Secrets & Tips de Locaux</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Hidden Gems & Local Tips</span></div>
+    <div class="nbgrid rv">
+      <div class="nbc dk">
+        <span class="nbi">🌿</span>
+        <p class="nbn">Jardin Jean-Félix Hap</p>
+        <p class="nba">Rue Louis Hap · Etterbeek</p>
+        <p class="nbd"><span class="fr">Havre de paix totalement méconnu des touristes — potagers collectifs, petit étang, pelouses ensoleillées. Parfait pour lire, méditer ou décompresser après une longue journée à la Commission.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">A completely tourist-free haven — community gardens, a small pond, sunny lawns. Perfect for reading, unwinding after a long day at the Commission.</span></p>
+      </div>
+      <div class="nbc dk">
+        <span class="nbi">🌄</span>
+        <p class="nbn"><span class="fr">Toit de l'Arc — Cinquantenaire</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Arch Rooftop — Cinquantenaire</span></p>
+        <p class="nbd"><span class="fr">Peu de gens le savent : le toit est accessible gratuitement. Vue 360° époustouflante sur toute la ville. Inoubliable au coucher de soleil.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Few people know: the rooftop is freely accessible. Breathtaking 360° city view. Unforgettable at sunset.</span></p>
+      </div>
+      <div class="nbc dk">
+        <span class="nbi">🏊</span>
+        <p class="nbn"><span class="fr">Piscine d'Etterbeek</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Etterbeek Swimming Pool</span></p>
+        <p class="nbd"><span class="fr">L'une des piscines les plus agréables et les moins fréquentées de Bruxelles. Idéale tôt le matin avant la Commission.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">One of Brussels' most pleasant and least crowded pools. Ideal early morning before heading to the Commission.</span></p>
+      </div>
+    </div>
+    <ul class="rlist rv" style="margin-top:1rem">
+      <li><span class="ri">💡</span><div><b class="fr">Week-end : le quartier Schuman se vide</b><b class="en">Weekends: Schuman quarter empties out</b><span class="re"><span class="fr">Les eurocrates partent — profitez-en pour vous promener tranquillement dans les squares Art Nouveau presque déserts.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">EU workers leave — perfect for a peaceful stroll through the nearly empty Art Nouveau squares.</span></span></div></li>
+      <li><span class="ri">📅</span><div><b class="fr">Notez les dates des sommets européens</b><b class="en">Note EU summit dates</b><span class="re"><span class="fr">Le quartier Schuman est bouclé ces jours-là — prévoyez les transports en conséquence.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">The Schuman area is locked down — plan your transport accordingly.</span></span></div></li>
+      <li><span class="ri">🌸</span><div><b class="fr">Printemps au Cinquantenaire</b><b class="en">Spring at the Cinquantenaire</b><span class="re"><span class="fr">Les cerisiers en fleurs au parc sont à ne pas manquer — généralement fin mars / début avril.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Cherry blossom in the park is unmissable — usually late March / early April.</span></span></div></li>
+    </ul>
+
+    <div class="hr"></div>
+
+    <!-- LIENS UTILES -->
+    <div class="slbl rv">🔗 <span class="fr">Liens Utiles · Bruxelles</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Useful Links · Brussels</span></div>
+    <p class="rv" style="font-size:.86rem;color:var(--bark-md);margin-bottom:1.25rem">
+      <span class="fr">Tout ce qu'il faut pour explorer Bruxelles, se déplacer et ne rien manquer.</span>
+      <span class="bi-sep">&thinsp;·&thinsp;</span>
+      <span class="en">Everything you need to explore Brussels, get around and stay in the loop.</span>
+    </p>
+
+    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.85rem">
+
+      <a href="https://visit.brussels" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer;transition:box-shadow .2s,transform .2s">
+          <span class="nbi">🗓️</span>
+          <p class="nbn">visit.brussels</p>
+          <p class="nba">visit.brussels</p>
+          <p class="nbd"><span class="fr">Agenda officiel — événements, expos, concerts, activités à Bruxelles.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Official agenda — events, exhibitions, concerts, activities in Brussels.</span></p>
+          <div class="nbtags"><span class="tg g">⭐ Incontournable</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.agenda.brussels" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer">
+          <span class="nbi">🎭</span>
+          <p class="nbn">agenda.brussels</p>
+          <p class="nba">agenda.brussels</p>
+          <p class="nbd"><span class="fr">Agenda culturel complet — théâtre, musique, street art, nightlife.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Full cultural agenda — theatre, music, street art, nightlife.</span></p>
+          <div class="nbtags"><span class="tg">Culture</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.stib-mivb.be" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer">
+          <span class="nbi">🚇</span>
+          <p class="nbn">stib.be / mivb.be</p>
+          <p class="nba">stib-mivb.be</p>
+          <p class="nbd"><span class="fr">Horaires STIB en temps réel — métro, tram, bus. App STIB Go recommandée.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Real-time STIB schedules — metro, tram, bus. STIB Go app recommended.</span></p>
+          <div class="nbtags"><span class="tg">Transports</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.villo.be" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer">
+          <span class="nbi">🚲</span>
+          <p class="nbn">villo.be</p>
+          <p class="nba">villo.be</p>
+          <p class="nbd"><span class="fr">Vélos partagés Bruxelles — stations, disponibilités, abonnements.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Brussels bike share — stations, availability, subscriptions.</span></p>
+          <div class="nbtags"><span class="tg">Vélo · Bike</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.meteo.be" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer">
+          <span class="nbi">🌦️</span>
+          <p class="nbn">meteo.be</p>
+          <p class="nba">meteo.be</p>
+          <p class="nbd"><span class="fr">Météo officielle belge — prévisions Bruxelles et Belgique.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Official Belgian weather — Brussels and Belgium forecasts.</span></p>
+          <div class="nbtags"><span class="tg">Météo · Weather</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.cinquantenaire.be" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer">
+          <span class="nbi">🏛️</span>
+          <p class="nbn">cinquantenaire.be</p>
+          <p class="nba">cinquantenaire.be</p>
+          <p class="nbd"><span class="fr">Programme des musées du Cinquantenaire — expo, horaires, tarifs.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Cinquantenaire museums programme — exhibitions, hours, prices.</span></p>
+          <div class="nbtags"><span class="tg">Musées · Museums</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.atelier210.be" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer">
+          <span class="nbi">🎪</span>
+          <p class="nbn">atelier210.be</p>
+          <p class="nba">atelier210.be</p>
+          <p class="nbd"><span class="fr">Salle de spectacle d'Etterbeek — concerts, théâtre, programme complet.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Etterbeek's venue — concerts, theatre, full programme.</span></p>
+          <div class="nbtags"><span class="tg t">Etterbeek local</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.1733.be" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="nbc" style="cursor:pointer">
+          <span class="nbi">🏥</span>
+          <p class="nbn">1733.be</p>
+          <p class="nba">1733.be</p>
+          <p class="nbd"><span class="fr">Médecin de garde en ligne — consultation, rendez-vous nuit & week-end.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">On-call doctor online — consultation, appointments, night & weekend.</span></p>
+          <div class="nbtags"><span class="tg terra">Santé · Health</span></div>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+  <div class="footer"><strong>Etterbeek · Bruxelles</strong><br><span class="fr">Questions ?</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Questions?</span> Eva <a href="tel:0485114070">0485 11 40 70</a> · Elias <a href="tel:0478804513">0478 80 45 13</a></div>
+</div>
+
+
+<!-- ══════════════════════ HOW-TO ═══════════════════════════ -->
+<div class="page" id="pg-howto">
+  <div class="phero">
+    <div class="phero-bg"></div>
+    <div class="phero-inner">
+      <span class="ptag">How-to</span>
+      <h2 class="ph1"><span class="fr">Mode d'<em>emploi</em></span><span class="en">How to use <em>things</em></span></h2>
+      <p class="ph-sub"><span class="fr">TV · Lave-linge · Chauffage · Tableau électrique</span><span class="en">TV · Washing machine · Heating · Fuse box</span></p>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <!-- ─── GOOGLE TV ─────────────────────────────────────── -->
+    <div class="slbl rv">📺 Google TV</div>
+    <div class="al info rv"><span class="al-i">💡</span><span><span class="fr">Utilisez <strong>uniquement la télécommande blanche Google TV</strong> pour allumer la TV et naviguer.</span><span class="en">Use <strong>only the white Google TV remote</strong> to turn on the TV and navigate.</span></span></div>
+
+    <div class="rv" style="display:grid;grid-template-columns:140px 1fr;gap:1.5rem;align-items:start;margin:1rem 0">
+      <!-- Remote photo with annotation overlay -->
+      <div style="position:relative;display:inline-block">
+        <img src="data:image/png;base64,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" alt="Google TV Remote" style="width:130px;border-radius:12px;display:block">
+        <svg style="position:absolute;top:0;left:0;width:130px;height:100%;pointer-events:none" viewBox="0 0 152 400" preserveAspectRatio="none">
+          <circle cx="76" cy="88" r="5" fill="#B8735A" stroke="white" stroke-width="1.5"/>
+          <circle cx="50" cy="168" r="5" fill="#4B6B46" stroke="white" stroke-width="1.5"/>
+          <circle cx="102" cy="168" r="5" fill="#4B6B46" stroke="white" stroke-width="1.5"/>
+          <circle cx="50" cy="204" r="5" fill="#B8735A" stroke="white" stroke-width="1.5"/>
+          <circle cx="102" cy="204" r="5" fill="#B8735A" stroke="white" stroke-width="1.5"/>
+          <circle cx="46" cy="240" r="5" fill="#4B6B46" stroke="white" stroke-width="1.5"/>
+          <circle cx="106" cy="240" r="5" fill="#4B6B46" stroke="white" stroke-width="1.5"/>
+          <circle cx="38" cy="296" r="5" fill="#B8735A" stroke="white" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <!-- Button list -->
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <div class="icard" style="padding:.7rem 1rem">
+          <p class="ic-l">⭕ <span class="fr">Joystick navigation</span><span class="en">Directional pad</span></p>
+          <p class="ic-v" style="font-size:.82rem"><span class="fr">Naviguer ▲▼◀▶ · Centre = OK / Confirmer</span><span class="en">Navigate ▲▼◀▶ · Centre = OK / Confirm</span></p>
+        </div>
+        <div class="icard" style="padding:.7rem 1rem">
+          <p class="ic-l">← <span class="fr">Retour</span><span class="en">Back</span> &nbsp;·&nbsp; ⌂ <span class="fr">Accueil</span><span class="en">Home</span></p>
+          <p class="ic-v" style="font-size:.82rem"><span class="fr">Retour = page précédente · Accueil = écran principal</span><span class="en">Back = previous screen · Home = main screen</span></p>
+        </div>
+        <div class="icard" style="padding:.7rem 1rem">
+          <p class="ic-l" style="color:#1A1A1A">● <span class="fr">Google Assistant</span><span class="en">Google Assistant</span></p>
+          <p class="ic-v" style="font-size:.82rem"><span class="fr">Maintenir + parler : "Joue Stranger Things sur Netflix"</span><span class="en">Hold + speak: "Play Stranger Things on Netflix"</span></p>
+        </div>
+        <div class="icard" style="padding:.7rem 1rem">
+          <p class="ic-l"><span style="color:#FF0000;font-weight:700">YouTube</span> &nbsp;·&nbsp; <span style="color:#E50914;font-weight:700">Netflix</span></p>
+          <p class="ic-v" style="font-size:.82rem"><span class="fr">Raccourcis directs · Connectez-vous avec votre propre compte</span><span class="en">Direct shortcuts · Log in with your own account</span></p>
+        </div>
+        <div class="icard" style="padding:.7rem 1rem">
+          <p class="ic-l">⏻ Power &nbsp;·&nbsp; 🔊 <span class="fr">Volume (côté droit)</span><span class="en">Volume (right side)</span></p>
+          <p class="ic-v" style="font-size:.82rem"><span class="fr">Power = allumer/éteindre · Volume sur le bord droit</span><span class="en">Power = on/off · Volume on the right edge</span></p>
+        </div>
+        <div class="icard" style="padding:.7rem 1rem;background:var(--terra-lt)">
+          <p class="ic-l" style="color:var(--terra)">📱 <span class="fr">Applications</span><span class="en">Apps</span></p>
+          <p class="ic-v" style="font-size:.82rem">Netflix · YouTube · Prime Video · Disney+ · Spotify</p>
+          <p style="font-size:.75rem;color:var(--fog);margin-top:.25rem;font-style:italic"><span class="fr">Connectez-vous avec votre compte · Déconnectez-vous avant de partir</span><span class="en">Log in with your own account · Log out before leaving</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- ─── LAVE-LINGE ────────────────────────────────────── -->
+    <div class="slbl rv">🧺 <span class="fr">Lave-linge · Bosch Serie 4</span><span class="en">Washing Machine · Bosch Serie 4</span></div>
+    <div class="al info rv"><span class="al-i">📍</span><span><span class="fr">Cave niveau -1 · Porte "Laundry Room" · Utilisez votre propre lessive</span><span class="en">Basement level -1 · "Laundry Room" door · Use your own detergent</span></span></div>
+
+    <!-- Drawer diagram -->
+    <div class="rv" style="background:#fff;border:1px solid var(--beige-dk);border-radius:var(--rad);padding:1.1rem;margin:.75rem 0">
+      <p style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-dk);margin-bottom:.75rem"><span class="fr">Le tiroir à lessive</span><span class="en">Detergent drawer</span></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;text-align:center">
+        <div style="background:var(--sage-pl);border-radius:8px;padding:.75rem .5rem">
+          <p style="font-size:1.1rem;margin-bottom:.25rem">①</p>
+          <p style="font-size:.8rem;font-weight:500"><span class="fr">Lessive</span><span class="en">Detergent</span></p>
+          <p style="font-size:.7rem;color:var(--sage-dk)"><span class="fr">← gauche</span><span class="en">← left</span></p>
+        </div>
+        <div style="background:var(--terra-lt);border-radius:8px;padding:.75rem .5rem">
+          <p style="font-size:1.1rem;margin-bottom:.25rem">②</p>
+          <p style="font-size:.8rem;font-weight:500"><span class="fr">Adoucissant</span><span class="en">Softener</span></p>
+          <p style="font-size:.7rem;color:var(--terra)"><span class="fr">milieu</span><span class="en">middle</span></p>
+        </div>
+        <div style="background:var(--beige);border-radius:8px;padding:.75rem .5rem">
+          <p style="font-size:1.1rem;margin-bottom:.25rem">③</p>
+          <p style="font-size:.8rem;font-weight:500"><span class="fr">Prélavage</span><span class="en">Pre-wash</span></p>
+          <p style="font-size:.7rem;color:var(--fog);font-style:italic"><span class="fr">rarement · droite →</span><span class="en">rarely · right →</span></p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="rlist rv">
+      <li><div class="step-num-inline">1</div><div><span class="fr"><strong>Chargez</strong> le linge (¾ max)</span><span class="en"><strong>Load</strong> the laundry (¾ max)</span></div></li>
+      <li><div class="step-num-inline">2</div><div><span class="fr"><strong>Ajoutez</strong> votre lessive dans la case ① (gauche)</span><span class="en"><strong>Add</strong> your detergent in compartment ① (left)</span></div></li>
+      <li><div class="step-num-inline">3</div><div><span class="fr"><strong>Tournez</strong> la molette sur le programme — <strong>Coton 40°</strong> recommandé</span><span class="en"><strong>Turn</strong> the dial to your programme — <strong>Cotton 40°</strong> recommended</span></div></li>
+      <li><div class="step-num-inline">4</div><div><span class="fr">Bouton 🌡️ (milieu) pour ajuster la <strong>température</strong></span><span class="en">Middle button 🌡️ to adjust <strong>temperature</strong></span></div></li>
+      <li><div class="step-num-inline">5</div><div><span class="fr">Appuyez sur <strong>▷⏸ Start</strong> — voyant rouge = en marche</span><span class="en">Press <strong>▷⏸ Start</strong> — red light = running</span></div></li>
+      <li><div class="step-num-inline">6</div><div><span class="fr">Récupérez le linge dès la fin — <strong>laissez le hublot entrouvert</strong></span><span class="en">Collect laundry promptly — <strong>leave the door ajar</strong> after use</span></div></li>
+    </ul>
+    <div class="al warn rv" style="margin-top:.75rem"><span class="al-i">⚠️</span><span><span class="fr">Problème ou code erreur ? Contactez Eva (0485 11 40 70) ou Elias (0478 80 45 13)</span><span class="en">Issue or error code? Contact Eva (0485 11 40 70) or Elias (0478 80 45 13)</span></span></div>
+
+    <div class="hr"></div>
+
+    <!-- ─── CHAUFFAGE ─────────────────────────────────────── -->
+    <div class="slbl rv">🌡️ <span class="fr">Chauffage</span><span class="en">Heating</span></div>
+    <ul class="rlist rv">
+      <li><span class="ri">1️⃣</span><div><span class="fr"><strong>Thermostat</strong> près de la porte du salon — réglez la température souhaitée</span><span class="en"><strong>Thermostat</strong> near the living room door — set your desired temperature</span></div></li>
+      <li><span class="ri">2️⃣</span><div><span class="fr"><strong>Vannes</strong> sur chaque radiateur — ouvrez ou fermez selon vos besoins</span><span class="en"><strong>Valves</strong> on each radiator — open or close as needed</span></div></li>
+      <li><span class="ri">💡</span><div><span class="fr">Température recommandée : <strong>19–21°C</strong> · Fermez les fenêtres quand le chauffage est allumé</span><span class="en">Recommended temperature: <strong>19–21°C</strong> · Close windows when heating is on</span></div></li>
+    </ul>
+
+    <div class="hr"></div>
+
+    <!-- ─── DISJONCTEUR ───────────────────────────────────── -->
+    <div class="slbl rv">⚡ <span class="fr">Tableau Électrique</span><span class="en">Fuse Box</span></div>
+    <div class="al warn rv"><span class="al-i">📍</span><span><span class="fr"><strong>Situé dans les toilettes</strong> — tableau sur le mur</span><span class="en"><strong>Located in the toilet/WC</strong> — box on the wall</span></span></div>
+    <ul class="rlist rv" style="margin-top:.75rem">
+      <li><div class="step-num-inline">1</div><div><span class="fr">Repérez le levier tombé en position <strong>basse ↓</strong></span><span class="en">Find the switch that has flipped <strong>down ↓</strong></span></div></li>
+      <li><div class="step-num-inline">2</div><div><span class="fr"><strong>Débranchez</strong> l'appareil qui a causé le problème</span><span class="en"><strong>Unplug</strong> the appliance that caused the trip</span></div></li>
+      <li><div class="step-num-inline">3</div><div><span class="fr">Remettez le levier en position <strong>haute ↑</strong></span><span class="en">Flip the switch back <strong>up ↑</strong></span></div></li>
+      <li><div class="step-num-inline">4</div><div><span class="fr">Si ça recommence immédiatement → <strong>contactez Eva ou Elias</strong></span><span class="en">If it trips again immediately → <strong>contact Eva or Elias</strong></span></div></li>
+    </ul>
+
+  </div>
+  <div class="footer">
+    <strong>Avenue Boileau 3 · Apt 1 · 1040 Etterbeek</strong><br>
+    Eva <a href="tel:0485114070">0485 11 40 70</a> · Elias <a href="tel:0478804513">0478 80 45 13</a>
+  </div>
+</div>
+
+<!-- ══════════════════════ CHECKLIST ══════════════════════════ -->
+<div class="page" id="pg-checklist">
+  <div class="phero">
+    <div class="phero-bg"></div>
+    <div class="phero-inner">
+      <span class="ptag"><span class="fr">Check-list Locataire</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Tenant Checklist</span></span>
+      <h2 class="ph1"><span class="fr"><em>Check-list</em></span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en"><em>Checklist</em></span></h2>
+      <p class="ph-sub">Avenue Boileau 3 · Apt 1 · 1040 Etterbeek</p>
+    </div>
+  </div>
+
+  <div class="cl-head">
+    <div class="cl-progress-top">
+      <span class="cl-pct" id="cl-pct">0%</span>
+      <span class="cl-ptxt"><span id="cl-done">0</span> / <span id="cl-total">0</span> <span class="fr">tâches complétées</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">tasks completed</span></span>
+    </div>
+    <div class="cl-track"><div class="cl-fill" id="cl-fill"></div></div>
+  </div>
+
+  <div class="cltabs">
+    <button class="clt on" id="clt-guest" onclick="clTab('guest',this)">👤 <span class="fr">Identité</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Profile</span></button>
+    <button class="clt" id="clt-arrivee" onclick="clTab('arrivee',this)">🏠 <span class="fr">Arrivée</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Arrival</span> <span class="cnt" id="cnt-a">0</span></button>
+    <button class="clt" id="clt-vie" onclick="clTab('vie',this)">🌀 <span class="fr">Quotidien</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Daily</span> <span class="cnt" id="cnt-v">0</span></button>
+    <button class="clt" id="clt-depart" onclick="clTab('depart',this)">🏁 <span class="fr">Départ</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Departure</span> <span class="cnt" id="cnt-d">0</span></button>
+    <button class="clt" id="clt-infos" onclick="clTab('infos',this)">ℹ️ Infos</button>
+  </div>
+
+  <div style="max-width:820px;margin:0 auto;padding:1.5rem 1.5rem 4rem">
+
+    <!-- GUEST TAB -->
+    <div class="clpanel on" id="clp-guest">
+      <div class="cl-intro">
+        <span class="cl-intro-ico">👤</span>
+        <div>
+          <p class="cl-intro-t"><span class="fr">Vos informations</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Your details</span></p>
+          <p class="cl-intro-s"><span class="fr">Ces informations restent privées et stockées localement sur votre appareil.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">These details are private and stored locally on your device only.</span></p>
+        </div>
+      </div>
+      <div class="gform">
+        <p class="gform-t"><span class="fr">Bienvenue — présentez-vous 👋</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Welcome — tell us about you 👋</span></p>
+        <div class="fgrid">
+          <div class="fg">
+            <label><span class="fr">Prénom & Nom</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">First & Last Name</span></label>
+            <input type="text" id="g-name" placeholder="Maria Rossi" oninput="gSave()">
+          </div>
+          <div class="fg">
+            <label>Email</label>
+            <input type="email" id="g-email" placeholder="maria@eu.europa.eu" oninput="gSave()">
+          </div>
+          <div class="fg">
+            <label><span class="fr">Téléphone / GSM</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Phone / Mobile</span></label>
+            <input type="tel" id="g-phone" placeholder="+32 4xx xx xx xx" oninput="gSave()">
+          </div>
+          <div class="fg">
+            <label><span class="fr">Institution / Organisation</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Institution / Organisation</span></label>
+            <input type="text" id="g-org" placeholder="DG ENER, Parlement…" oninput="gSave()">
+          </div>
+          <div class="fg">
+            <label><span class="fr">Date d'arrivée</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Arrival date</span></label>
+            <input type="date" id="g-arrival" oninput="gSave()">
+          </div>
+          <div class="fg">
+            <label><span class="fr">Date de départ</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Departure date</span></label>
+            <input type="date" id="g-departure" oninput="gSave()">
+          </div>
+        </div>
+      </div>
+      <div class="al info" style="margin-top:1rem">
+        <span class="al-i">👉</span>
+        <span><span class="fr">Une fois vos infos saisies, allez sur <strong>Arrivée</strong> pour commencer la checklist.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Once you've filled in your details, head to <strong>Arrival</strong> to start the checklist.</span></span>
+      </div>
+    </div>
+
+    <!-- ARRIVÉE TAB -->
+    <div class="clpanel" id="clp-arrivee">
+      <div class="cl-intro"><span class="cl-intro-ico">🏠</span><div><p class="cl-intro-t"><span class="fr">Checklist d'Arrivée</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Arrival Checklist</span></p><p class="cl-intro-s"><span class="fr">Tout vérifier à votre arrivée.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Everything to check on arrival.</span></p></div></div>
+
+      <div class="clg">
+        <div class="clglbl">🔑 <span class="fr">Clés & Accès</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Keys & Access</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="a1"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">2 clés reçues (bâtiment + appartement)</span><span class="clt-en">Both keys received (building + apartment)</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a2"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">WiFi noté — LANgoustine / arukigaya</span><span class="clt-en">WiFi saved — LANgoustine / arukigaya</span></div></div>
+      </div>
+
+      <div class="clg">
+        <div class="clglbl">🛏️ <span class="fr">Chambre</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Room</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="a3"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Chambre vérifiée et en bon état</span><span class="clt-en">Room checked and in good condition</span><div class="remark-wrap"><span class="remark-lbl fr">Remarque</span><span class="remark-lbl en">Remark</span><textarea class="remark-ta" id="rm-a3" placeholder="..." oninput="rmSave('a3',this.value)" rows="1"></textarea></div></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a4"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Canapé-lit fonctionnel, linge en place</span><span class="clt-en">Sofa-bed working, linen in place</span><div class="remark-wrap"><span class="remark-lbl fr">Remarque</span><span class="remark-lbl en">Remark</span><textarea class="remark-ta" id="rm-a4" placeholder="..." oninput="rmSave('a4',this.value)" rows="1"></textarea></div></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a5"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Dressing, bureau et chaise disponibles</span><span class="clt-en">Wardrobe, desk and chair available</span></div></div>
+      </div>
+
+      <div class="clg">
+        <div class="clglbl">🏠 <span class="fr">Logement</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Apartment</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="a6"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Tour de l'appartement effectué avec l'hôte</span><span class="clt-en">Apartment tour done with host</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a7"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Cuisine présentée — place dans le frigo assignée</span><span class="clt-en">Kitchen shown — fridge shelf assigned</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a8"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Chauffage expliqué (thermostat porte salon + vannes)</span><span class="clt-en">Heating explained (thermostat living room door + valves)</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a9"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Lave-linge & sèche-linge localisés (cave -1)</span><span class="clt-en">Washer & dryer located (basement -1)</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a10"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Tri des déchets & jours de collecte expliqués</span><span class="clt-en">Waste sorting & collection days explained</span></div></div>
+      </div>
+
+      <div class="clg">
+        <div class="clglbl">📋 Admin</div>
+        <div class="clitem" onclick="ct(this)" data-id="a11"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Guide de la maison lu</span><span class="clt-en">House guide read</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a12"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Contacts Eva & Elias enregistrés</span><span class="clt-en">Eva & Elias contacts saved</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a13"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Contrat de location signé</span><span class="clt-en">Rental agreement signed</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="a14"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Parking vélo : clé obtenue si nécessaire</span><span class="clt-en">Bike parking: key obtained if needed</span></div></div>
+      </div>
+
+      <div class="cldone" id="done-a">
+        <span class="cldone-ico">🎉</span>
+        <p class="cldone-t"><span class="fr">Arrivée complète !</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">All settled in!</span></p>
+        <p class="cldone-s"><span class="fr">Bienvenue à Etterbeek — profitez de votre séjour !</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Welcome to Etterbeek — enjoy your stay!</span></p>
+      </div>
+    </div>
+
+    <!-- VIE QUOTIDIENNE TAB -->
+    <div class="clpanel" id="clp-vie">
+      <div class="cl-intro"><span class="cl-intro-ico">🌀</span><div><p class="cl-intro-t"><span class="fr">Vie Quotidienne</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Daily Living</span></p><p class="cl-intro-s"><span class="fr">Bonnes pratiques à maintenir pendant votre séjour.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Good habits to maintain during your stay.</span></p></div></div>
+
+      <div class="clg">
+        <div class="clglbl">🍳 <span class="fr">Espaces partagés</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Shared spaces</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="v1"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Cuisine nettoyée après chaque utilisation</span><span class="clt-en">Kitchen cleaned after each use</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="v2"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Salle de bain laissée propre</span><span class="clt-en">Bathroom left clean</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="v3"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Nourriture périmée jetée régulièrement</span><span class="clt-en">Expired food disposed of regularly</span></div></div>
+      </div>
+      <div class="clg">
+        <div class="clglbl">♻️ <span class="fr">Déchets</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Waste</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="v4"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">🔵🟠 Sac bleu + orange sortis le lundi (18h–24h)</span><span class="clt-en">🔵🟠 Blue + orange bags out Monday (6pm–midnight)</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="v5"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">🟢 Sac vert sorti le mardi (5h–12h)</span><span class="clt-en">🟢 Green bag out Tuesday (5am–noon)</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="v6"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">⚪🟡 Sac blanc + jaune sortis le jeudi (18h–24h)</span><span class="clt-en">⚪🟡 White + yellow bags out Thursday (6pm–midnight)</span></div></div>
+      </div>
+      <div class="clg">
+        <div class="clglbl">🤝 <span class="fr">Règles</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Rules</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="v7"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Calme respecté entre 22h et 8h</span><span class="clt-en">Quiet hours respected (10pm–8am)</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="v8"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Problèmes signalés à Eva ou Elias rapidement</span><span class="clt-en">Issues reported to Eva or Elias promptly</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="v9"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Linge entretenu avec lessive personnelle (cave -1)</span><span class="clt-en">Linen washed with own detergent (basement -1)</span></div></div>
+      </div>
+    </div>
+
+    <!-- DÉPART TAB -->
+    <div class="clpanel" id="clp-depart">
+      <div class="cl-intro"><span class="cl-intro-ico">🏁</span><div><p class="cl-intro-t"><span class="fr">Checklist de Départ</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Departure Checklist</span></p><p class="cl-intro-s"><span class="fr">À compléter avant de rendre les clés.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Complete before returning keys.</span></p></div></div>
+
+      <div class="clg">
+        <div class="clglbl">🛏️ <span class="fr">Chambre</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Room</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="d1"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Chambre propre et rangée</span><span class="clt-en">Room clean and tidy</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d2"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Linge lavé et rangé proprement</span><span class="clt-en">Linen washed and stored neatly</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d3"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Affaires personnelles rassemblées</span><span class="clt-en">Personal belongings gathered</span></div></div>
+      </div>
+      <div class="clg">
+        <div class="clglbl">🍳 <span class="fr">Cuisine & Communs</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Kitchen & Common Areas</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="d4"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Réfrigérateur vidé et nettoyé</span><span class="clt-en">Fridge empty and cleaned</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d5"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Cuisine nettoyée</span><span class="clt-en">Kitchen cleaned</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d6"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Salle de bain nettoyée</span><span class="clt-en">Bathroom cleaned</span></div></div>
+      </div>
+      <div class="clg">
+        <div class="clglbl">♻️ <span class="fr">Déchets finaux</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Final waste</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="d7"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Dernier tri des déchets effectué</span><span class="clt-en">Final waste sorting done</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d8"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Poubelles sorties si jour de collecte</span><span class="clt-en">Bins out if collection day</span></div></div>
+      </div>
+      <div class="clg">
+        <div class="clglbl">🔑 <span class="fr">Remise des clés</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Key return</span></div>
+        <div class="clitem" onclick="ct(this)" data-id="d9"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Fenêtres fermées dans toutes les pièces</span><span class="clt-en">Windows closed in all rooms</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d10"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Lumières éteintes, appareils débanchés</span><span class="clt-en">Lights off, appliances unplugged</span></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d11"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Dommages éventuels signalés à Eva ou Elias</span><span class="clt-en">Any damage reported to Eva or Elias</span><div class="remark-wrap"><span class="remark-lbl fr">Décrire si nécessaire</span><span class="remark-lbl en">Describe if needed</span><textarea class="remark-ta" id="rm-d11" placeholder="..." oninput="rmSave('d11',this.value)" rows="1"></textarea></div></div></div>
+        <div class="clitem" onclick="ct(this)" data-id="d12"><div class="clbox"><span class="clchk">✓</span></div><div class="cltxt"><span class="clt-fr">Les 2 clés remises à Eva ou Elias</span><span class="clt-en">Both keys returned to Eva or Elias</span></div></div>
+      </div>
+
+      <!-- REPORT & FEEDBACK -->
+      <div class="report-box">
+        <p class="report-t"><span class="fr">📝 Votre avis & Rapport de fin de séjour</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">📝 Your feedback & End-of-stay report</span></p>
+        <p class="report-s"><span class="fr">Laissez-nous un avis sur votre séjour, puis envoyez votre rapport complet par WhatsApp ou email. Cela nous aide à améliorer l'expérience pour les prochains locataires.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Leave us feedback about your stay, then send your full report by WhatsApp or email. This helps us improve the experience for future tenants.</span></p>
+
+        <label style="font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-lt);display:block;margin-bottom:.4rem"><span class="fr">Votre avis / Feedback</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Your feedback</span></label>
+        <textarea class="feedback-area" id="feedback" placeholder="..." oninput="gSave()"></textarea>
+
+        <div id="rpreview" class="preview-box"></div>
+
+        <div class="report-btns">
+          <button class="rbtn em" onclick="buildReport()" style="background:rgba(255,255,255,.15);color:var(--beige);border:1px solid rgba(255,255,255,.22)">
+            👁️ <span class="fr">Prévisualiser le rapport</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Preview report</span>
+          </button>
+          <a class="rbtn wa" id="btn-wa" href="#" onclick="sendWA(event)">
+            💬 <span class="fr">Envoyer par WhatsApp</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Send via WhatsApp</span>
+          </a>
+          <a class="rbtn em" id="btn-em" href="#" onclick="sendEmail(event)">
+            ✉️ <span class="fr">Envoyer par Email</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Send by Email</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cldone" id="done-d">
+        <span class="cldone-ico">🌿</span>
+        <p class="cldone-t"><span class="fr">Départ complet !</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">All done — goodbye!</span></p>
+        <p class="cldone-s"><span class="fr">Merci pour votre séjour à Etterbeek. Bonne route !</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Thank you for your stay in Etterbeek. Safe travels!</span></p>
+      </div>
+    </div>
+
+    <!-- INFOS TAB -->
+    <div class="clpanel" id="clp-infos">
+      <div class="ipc">
+        <p class="ipc-l">📶 WiFi</p>
+        <div style="background:var(--bark);border-radius:10px;padding:1.15rem;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 20% 50%,rgba(109,148,103,.35),transparent 60%)"></div>
+          <div style="position:relative;z-index:1">
+            <p style="font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-lt);margin-bottom:.3rem">Network</p>
+            <p style="font-size:1.02rem;color:var(--beige);margin-bottom:.5rem">LANgoustine</p>
+            <p style="font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-lt);margin-bottom:.3rem">Password</p>
+            <p style="font-family:'Courier New',monospace;font-size:1.18rem;color:var(--sage-lt);letter-spacing:.06em">arukigaya</p>
+          </div>
+        </div>
+      </div>
+      <div class="ipc">
+        <p class="ipc-l">📞 <span class="fr">Contacts</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Contacts</span></p>
+        <div class="crow s"><span>👤 Eva</span><a href="tel:0485114070" class="crow-n">0485 11 40 70</a></div>
+        <div class="crow s"><span>👤 Elias</span><a href="tel:0478804513" class="crow-n">0478 80 45 13</a></div>
+        <div class="crow r"><span>🚑 <span class="fr">Urgences</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Emergency</span></span><a href="tel:112" class="crow-n">112</a></div>
+        <div class="crow b"><span>🏥 <span class="fr">Médecin garde</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">On-call doctor</span></span><a href="tel:1733" class="crow-n">1733</a></div>
+      </div>
+      <div class="ipc">
+        <p class="ipc-l">♻️ <span class="fr">Collecte des déchets</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Waste collection</span></p>
+        <div class="dpill"><div style="display:flex;align-items:center;gap:.65rem"><span style="font-weight:500;font-size:.84rem;min-width:62px"><span class="fr">Lundi</span><span class="en">Monday</span></span><div class="dp-t"><span class="bt bt-bl">🔵 PMC</span><span class="bt bt-or">🟠 <span class="fr">Alim.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Food</span></span></div></div><span class="dp-time">18h–24h</span></div>
+        <div class="dpill"><div style="display:flex;align-items:center;gap:.65rem"><span style="font-weight:500;font-size:.84rem;min-width:62px"><span class="fr">Mardi</span><span class="en">Tuesday</span></span><div class="dp-t"><span class="bt bt-gr">🟢 <span class="fr">Jardin</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Garden</span></span></div></div><span class="dp-time">5h–12h</span></div>
+        <div class="dpill"><div style="display:flex;align-items:center;gap:.65rem"><span style="font-weight:500;font-size:.84rem;min-width:62px"><span class="fr">Jeudi</span><span class="en">Thursday</span></span><div class="dp-t"><span class="bt bt-wh">⚪ <span class="fr">Résiduel</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Residual</span></span><span class="bt bt-yl">🟡 <span class="fr">Papier</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Paper</span></span></div></div><span class="dp-time">18h–24h</span></div>
+      </div>
+      <div class="ipc">
+        <p class="ipc-l">🌡️ <span class="fr">Chauffage</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Heating</span></p>
+        <p style="font-size:.84rem;color:var(--bark-md);line-height:1.6"><span class="fr">Chauffage central au gaz. Thermostat près de la porte du salon. Réglez la température, puis ajustez chaque radiateur avec sa vanne.</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Central gas heating. Thermostat near the living room door. Set the temperature, then adjust each radiator valve individually.</span></p>
+      </div>
+      <div class="ipc">
+        <p class="ipc-l">🚇 <span class="fr">Transports</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Transport</span></p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.38rem;font-size:.83rem">
+          <li>🚊 <b><span class="fr">Tram 7 & 25</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Tram 7 & 25</span></b> — <span style="color:var(--fog)"><span class="fr">arrêt Boileau, juste devant</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">stop Boileau, right outside</span></span></li>
+          <li>🚇 <b>Métro L1/L5</b> — <span style="color:var(--fog)"><span class="fr">Mérode (Cinquantenaire) · Schuman (EU)</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Mérode (Cinquantenaire) · Schuman (EU)</span></span></li>
+          <li>🚲 <b>Villo!</b> — <span style="color:var(--fog)"><span class="fr">Stations à proximité</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Nearby stations</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="reset-btn" onclick="clReset()">↺ <span class="fr">Réinitialiser la checklist</span><span class="bi-sep">&thinsp;·&thinsp;</span><span class="en">Reset checklist</span></button>
+  <div class="footer" style="margin-top:1.5rem"><strong>Avenue Boileau 3 · Apt 1 · 1040 Etterbeek</strong><br>Eva <a href="tel:0485114070">0485 11 40 70</a> · Elias <a href="tel:0478804513">0478 80 45 13</a></div>
+</div>
+
+<script>
+/* ═══ PAGE NAV ═══════════════════════════════════════════════ */
+function nav(pg){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('pg-'+pg).classList.add('on');
+  document.getElementById('nb-'+pg).classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+  initReveal();
+}
+
+/* ═══ LANGUAGE ═══════════════════════════════════════════════ */
+function setLang(mode,btn){
+  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.body.className='lang-'+mode;
+}
+
+/* ═══ SCROLL REVEAL ══════════════════════════════════════════ */
+let obs;
+function initReveal(){
+  if(obs) obs.disconnect();
+  obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('vs')});
+  },{threshold:.06});
+  document.querySelectorAll('.page.on .rv').forEach(el=>{
+    el.classList.remove('vs'); obs.observe(el);
+  });
+}
+
+/* ═══ STORAGE ════════════════════════════════════════════════ */
+const KEY='bl3_final';
+function gs(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return{}}}
+function ss(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}}
+
+/* ═══ GUEST FORM ═════════════════════════════════════════════ */
+function gSave(){
+  const s=gs();
+  ['name','email','phone','org','arrival','departure'].forEach(f=>{
+    const el=document.getElementById('g-'+f);
+    if(el) s['g_'+f]=el.value;
+  });
+  const fb=document.getElementById('feedback');
+  if(fb) s['feedback']=fb.value;
+  ss(s);
+}
+function gLoad(){
+  const s=gs();
+  ['name','email','phone','org','arrival','departure'].forEach(f=>{
+    const el=document.getElementById('g-'+f);
+    if(el&&s['g_'+f]) el.value=s['g_'+f];
+  });
+  const fb=document.getElementById('feedback');
+  if(fb&&s['feedback']) fb.value=s['feedback'];
+}
+
+/* ═══ CHECKLIST ═════════════════════════════════════════════ */
+const IDS={
+  a:['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10','a11','a12','a13','a14'],
+  v:['v1','v2','v3','v4','v5','v6','v7','v8','v9'],
+  d:['d1','d2','d3','d4','d5','d6','d7','d8','d9','d10','d11','d12'],
+};
+
+function ct(el){
+  const id=el.dataset.id, s=gs();
+  s[id]=!s[id]; ss(s);
+  el.classList.toggle('ck',!!s[id]);
+  updateProg();
+}
+
+function updateProg(){
+  const s=gs();
+  const all=[...IDS.a,...IDS.v,...IDS.d];
+  const done=all.filter(id=>s[id]).length, total=all.length;
+  const pct=Math.round(done/total*100);
+  document.getElementById('cl-pct').textContent=pct+'%';
+  document.getElementById('cl-done').textContent=done;
+  document.getElementById('cl-total').textContent=total;
+  document.getElementById('cl-fill').style.width=pct+'%';
+  // tab counts
+  [['a','a'],['v','v'],['d','d']].forEach(([k,p])=>{
+    const cnt=IDS[k].filter(id=>s[id]).length;
+    const el=document.getElementById('cnt-'+p);
+    if(el) el.textContent=cnt+'/'+IDS[k].length;
+  });
+  // completion cards
+  document.getElementById('done-a').classList.toggle('on', IDS.a.every(id=>s[id]));
+  document.getElementById('done-d').classList.toggle('on', IDS.d.every(id=>s[id]));
+}
+
+function applyState(){
+  const s=gs();
+  document.querySelectorAll('.clitem').forEach(el=>el.classList.toggle('ck',!!s[el.dataset.id]));
+  updateProg();
+}
+
+function clTab(name,btn){
+  document.querySelectorAll('.clt').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.clpanel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('clp-'+name).classList.add('on');
+}
+
+function clReset(){
+  const isFr=document.body.className.includes('fr');
+  const msg=isFr?'Réinitialiser toute la checklist ?':'Reset the entire checklist?';
+  if(!confirm(msg)) return;
+  const keys=[...IDS.a,...IDS.v,...IDS.d];
+  const s=gs();
+  keys.forEach(k=>delete s[k]);
+  ss(s);
+  document.querySelectorAll('.clitem').forEach(el=>el.classList.remove('ck'));
+  updateProg();
+}
+
+/* ═══ REPORT BUILDER ════════════════════════════════════════ */
+function buildReport(){
+  const s=gs(), isFr=!document.body.className.includes('lang-en');
+  const g=(k)=>s['g_'+k]||'—';
+  const all=[...IDS.a,...IDS.v,...IDS.d];
+  const done=all.filter(id=>s[id]).length, total=all.length;
+  const pct=Math.round(done/total*100);
+  const fb=s['feedback']||'—';
+  const labels={
+    a1:'2 clés reçues / Keys received',a2:'WiFi noté',a3:'Chambre ok',a4:'Canapé-lit ok',
+    a5:'Dressing, bureau ok',a6:'Tour appartement',a7:'Cuisine, frigo',a8:'Chauffage expliqué',
+    a9:'Lave-linge localisé',a10:'Déchets expliqués',a11:'Guide lu',a12:'Contacts enregistrés',
+    a13:'Contrat signé',a14:'Vélo (si nécessaire)',
+    v1:'Cuisine propre',v2:'SDB propre',v3:'Frigo nettoyé',v4:'Poubelles lundi',
+    v5:'Poubelles mardi',v6:'Poubelles jeudi',v7:'Calme respecté',v8:'Problèmes signalés',v9:'Linge entretenu',
+    d1:'Chambre propre',d2:'Linge lavé',d3:'Affaires rassemblées',d4:'Frigo vide',
+    d5:'Cuisine nettoyée',d6:'SDB nettoyée',d7:'Déchets triés',d8:'Poubelles sorties',
+    d9:'Fenêtres fermées',d10:'Lumières éteintes',d11:'Dommages signalés',d12:'Clés remises',
+  };
+  // Collect remarks
+  const remarks={};
+  ['a3','a4','d11'].forEach(id=>{const v=s['rm_'+id]; if(v&&v.trim()) remarks[id]=v.trim()});
+  let checkedList='', uncheckedList='';
+  all.forEach(id=>{
+    if(s[id]){
+      checkedList+=`  ✅ ${labels[id]||id}\n`;
+      if(remarks[id]) checkedList+=`     💬 ${remarks[id]}\n`;
+    }
+    else uncheckedList+=`  ⬜ ${labels[id]||id}\n`;
+  });
+
+  const report=`
+🏠 RAPPORT DE SÉJOUR · STAY REPORT
+═══════════════════════════════════
+Avenue Boileau 3 · Apt 1 · 1040 Etterbeek
+
+👤 LOCATAIRE / TENANT
+  Nom: ${g('name')}
+  Email: ${g('email')}
+  Téléphone: ${g('phone')}
+  Organisation: ${g('org')}
+  Arrivée: ${g('arrival')}
+  Départ: ${g('departure')}
+
+✅ CHECKLIST: ${done}/${total} (${pct}%)
+${checkedList}${uncheckedList?`\n⬜ Non complétées:\n${uncheckedList}`:''}
+💬 AVIS / FEEDBACK
+  ${fb}
+
+─────────────────────────────────
+Envoyé depuis boileau3.html · ${new Date().toLocaleDateString('fr-BE')}
+`.trim();
+
+  document.getElementById('rpreview').textContent=report;
+  document.getElementById('rpreview').classList.add('on');
+  return report;
+}
+
+function sendWA(e){
+  e.preventDefault();
+  const txt=buildReport();
+  const encoded=encodeURIComponent(txt);
+  // Eva's number (WhatsApp format: country code without +)
+  window.open('https://wa.me/32485114070?text='+encoded,'_blank');
+}
+
+function sendEmail(e){
+  e.preventDefault();
+  const txt=buildReport();
+  const s=gs();
+  const subj=encodeURIComponent(`Rapport de séjour — ${s['g_name']||'Locataire'} — Boileau 3`);
+  const body=encodeURIComponent(txt);
+  window.location.href=`mailto:?subject=${subj}&body=${body}`;
+}
+
+
+/* ═══ REMARK FIELDS ════════════════════════════════════════ */
+function rmSave(id, val){
+  const s=gs(); s['rm_'+id]=val; ss(s);
+}
+function rmLoad(){
+  const s=gs();
+  document.querySelectorAll('.remark-ta').forEach(ta=>{
+    const id=ta.id.replace('rm-','');
+    if(s['rm_'+id]) ta.value=s['rm_'+id];
+  });
+}
+/* ═══ INIT ═══════════════════════════════════════════════════ */
+gLoad();
+rmLoad();
+applyState();
+initReveal();
+</script>
+</body>
+</html>
